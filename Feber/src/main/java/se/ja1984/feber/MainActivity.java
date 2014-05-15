@@ -7,7 +7,6 @@ import android.app.FragmentManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -61,23 +60,13 @@ public class MainActivity extends Activity
     }
 
     public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }
+
     }
 
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setTitle(mTitle);
     }
 
@@ -101,9 +90,7 @@ public class MainActivity extends Activity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -165,8 +152,6 @@ public class MainActivity extends Activity
             if(elements == null || elements.size() == 0) return;
 
             ArrayList<Article> articles = convertToArticle(elements);
-
-            Log.d("Febe","");
 
         }
 
