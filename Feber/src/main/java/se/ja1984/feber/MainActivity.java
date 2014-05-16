@@ -7,18 +7,24 @@ import android.app.FragmentManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.*;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+
+import se.ja1984.feber.Fragments.MainFragment;
 import se.ja1984.feber.Models.Article;
+import se.ja1984.feber.Models.ArticleAdapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class MainActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -28,8 +34,7 @@ public class MainActivity extends Activity
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
-    private String pageUrl = "http://feber.se/?p=%s";
-    private int page = 1;
+
     private CharSequence mTitle;
 
     @Override
@@ -41,22 +46,16 @@ public class MainActivity extends Activity
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
-        new LoadPageTask().execute();
+        if(savedInstanceState == null) {
+            getFragmentManager().beginTransaction().add(R.id.container, new MainFragment(),"HOME").commit();
+        }
+
 
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-    }
-
-    @Override
-    public void onNavigationDrawerItemSelected(int position) {
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
     }
 
     public void onSectionAttached(int number) {
@@ -94,83 +93,13 @@ public class MainActivity extends Activity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onNavigationDrawerItemSelected(int position) {
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
-    }
-
-    public ArrayList<Article> convertToArticle(Elements elements){
-        ArrayList<Article> articles = new ArrayList<Article>();
-
-        for(org.jsoup.nodes.Element element : elements){
-            articles.add(new Article(element));
-        }
-
-        return articles;
-    }
-
-    public class LoadPageTask extends AsyncTask<String,Void,Elements>{
-        @Override
-        protected void onPostExecute(Elements elements) {
-            //super.onPostExecute(elements);
-
-            if(elements == null || elements.size() == 0) return;
-
-            ArrayList<Article> articles = convertToArticle(elements);
-
-        }
-
-        @Override
-        protected Elements doInBackground(String... params) {
-            Document doc = null;
-            Elements articles = null;
-            try {
-                doc = Jsoup.connect(String.format(pageUrl, page)).get();
-                articles = doc.select("div[id^=article]");
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return articles;
-        }
-    }
-
-
 
 }

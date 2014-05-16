@@ -1,0 +1,60 @@
+<ScrollView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgArticleMainImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/placeholder"
+            />
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@drawable/gradient"
+                android:layout_alignBottom="@+id/imgArticleMainImage"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/relativeLayout">
+
+                <TextView
+                    android:id="@+id/txtArticleHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="House Of Cards"
+                    android:textColor="#fff"
+                    android:shadowColor="@android:color/black"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+        <TextView
+            style="@style/Article_Text"
+            android:id="@+id/txtArticleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detta är test text woop woop"
+            android:padding="20dp"
+            />
+
+    </LinearLayout>
+</ScrollView>

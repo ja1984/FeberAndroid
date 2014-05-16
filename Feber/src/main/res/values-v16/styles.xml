@@ -1,0 +1,24 @@
+<resources>
+
+    <style name="Article_Header">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:fontFamily">san-serif</item>
+    </style>
+    <style name="Article_Large_Header" parent="Article_Header">
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="Article_Preamble">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+        <item name="android:fontFamily">san-serif-light</item>
+    </style>
+    <style name="Article_Text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:fontFamily">san-serif</item>
+    </style>
+
+</resources>

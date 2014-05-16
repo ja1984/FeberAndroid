@@ -10,13 +10,17 @@ public class Article {
     private String Header;
     private String Text;
     private String ImageUrl;
+    private String Preamble;
+    private String ArticleUrl;
 
     public Article(){
 
     }
     public Article(Element element){
         setHeader(element.select("h1.type2 a").first().text());
-        setText(element.select("div.body1").first().text());
+        setArticleUrl(element.select("h1.type2 a").first().attr("href"));
+        setPreamble(element.select("div.preamble a").first().text());
+        setText(element.select("div.body1").first().html());
         Element youtubeImage = element.select("div.youtube > a img").first();
         if(youtubeImage != null){
             String id = youtubeImage.attr("id");
@@ -43,4 +47,20 @@ public class Article {
     public String getImageUrl() {return ImageUrl;}
 
     public void setImageUrl(String imageUrl) {ImageUrl = imageUrl;}
+
+    public String getPreamble() {
+        return Preamble;
+    }
+
+    public void setPreamble(String preamble) {
+        Preamble = preamble;
+    }
+
+    public String getArticleUrl() {
+        return ArticleUrl;
+    }
+
+    public void setArticleUrl(String articleUrl) {
+        ArticleUrl = articleUrl;
+    }
 }
