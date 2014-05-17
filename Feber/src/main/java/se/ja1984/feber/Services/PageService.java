@@ -2,18 +2,14 @@ package se.ja1984.feber.Services;
 
 import android.content.Context;
 import android.os.AsyncTask;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import se.ja1984.feber.Interface.TaskCompleted;
+import se.ja1984.feber.Models.Article;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import se.ja1984.feber.Interface.TaskCompleted;
-import se.ja1984.feber.Models.Article;
-import se.ja1984.feber.Models.ArticleAdapter;
-import se.ja1984.feber.R;
 
 /**
  * Created by jonathan on 2014-05-16.
@@ -46,27 +42,38 @@ public class PageService {
         return articles;
     }
 
-    public class LoadArticlesTask extends AsyncTask<String,Void,Elements> {
+    public class LoadArticlesTask extends AsyncTask<String,Void,ArrayList<Article>> {
         @Override
-        protected void onPostExecute(Elements elements) {
-            if(elements == null || elements.size() == 0) return;
-            ArrayList<Article> articles = convertToArticle(elements);
+        protected void onPostExecute(ArrayList<Article> articles) {
+
             _taskCompleted.onTaskComplete(articles);
         }
 
         @Override
-        protected Elements doInBackground(String... params) {
+        protected ArrayList<Article> doInBackground(String... params) {
             Document doc = null;
-            Elements articles = null;
+            Elements elements = null;
+            ArrayList<Article> articles = new ArrayList<Article>();
             try {
                 doc = Jsoup.connect(String.format(params[0])).get();
-                articles = doc.select("div[id^=article]");
+                elements = doc.select("div[id^=article]");
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
+            if(elements == null || elements.size() < 1) return articles;
+
+            try{
+                articles.addAll(convertToArticle(elements));
+            }
+            catch (Exception ex){
+                return  articles;
+            }
+
             return articles;
+
+
         }
     }
 

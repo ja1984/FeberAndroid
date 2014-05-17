@@ -5,10 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import se.ja1984.feber.R;
 
 import java.util.ArrayList;
-
-import se.ja1984.feber.R;
 
 /**
  * Created by jonathan on 2014-05-16.
@@ -24,6 +23,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         String iamge;
         TextView header;
         TextView preamble;
+        TextView temperature;
+        TextView category;
+        TextView published;
     }
 
     public ArticleAdapter(Context context, int resource, ArrayList<Article> articles) {
@@ -45,6 +47,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
             holder = new viewHolder();
             holder.header = (TextView)convertView.findViewById(R.id.txtArticleHeader);
             holder.preamble = (TextView)convertView.findViewById(R.id.txtArticlePreamble);
+            holder.temperature = (TextView)convertView.findViewById(R.id.txtArticleTemperature);
+            holder.category = (TextView)convertView.findViewById(R.id.txtArticleCategory);
+            holder.published = (TextView)convertView.findViewById(R.id.txtArticlePublished);
             convertView.setTag(holder);
         }
         else
@@ -56,6 +61,12 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         holder.header.setText(article.getHeader());
         holder.preamble.setText(article.getPreamble());
+        holder.category.setText(article.getCategory());
+        holder.published.setText("Publiserad " + article.getPublished());
+
+        String _temperature = article.getTemperature();
+        holder.temperature.setText(_temperature);
+        holder.temperature.setBackground(context.getResources().getDrawable(Integer.parseInt(_temperature.substring(0,2).replace(".","")) > 37 ? R.drawable.circle_hot : R.drawable.circle_cold));
         return convertView;
     }
 }

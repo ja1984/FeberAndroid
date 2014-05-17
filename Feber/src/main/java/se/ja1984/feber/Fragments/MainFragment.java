@@ -7,17 +7,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import java.util.ArrayList;
-
 import se.ja1984.feber.Helpers.EndlessScrollListener;
+import se.ja1984.feber.Helpers.Keys;
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
 import se.ja1984.feber.Models.ArticleActivity;
 import se.ja1984.feber.Models.ArticleAdapter;
 import se.ja1984.feber.R;
 import se.ja1984.feber.Services.PageService;
+
+import java.util.ArrayList;
 
 /**
  * Created by jonathan on 2014-05-16.
@@ -26,8 +30,8 @@ public class MainFragment extends Fragment {
     public ListView _articles;
 
     ArticleAdapter articlesAdapter;
-    private String PAGE_URL = "http://feber.se/?p=%s";
-
+    LinearLayout loading;
+    public static int currentPage = 1;
 
 
     public MainFragment() {
@@ -37,11 +41,13 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         _articles = (ListView) rootView.findViewById(R.id.lstArticles);
+        loading = (LinearLayout)rootView.findViewById(R.id.lnrLoadingArticles);
         articlesAdapter = new ArticleAdapter(getActivity(), R.layout.listitem_article,new ArrayList<Article>());
+
 
         if(_articles != null){
             _articles.setAdapter(articlesAdapter);
-            _articles.setOnScrollListener(new EndlessScrollListener(getActivity(),articlesAdapter));
+            _articles.setOnScrollListener(new EndlessScrollListener(getActivity(),this,articlesAdapter));
             _articles.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -57,14 +63,36 @@ public class MainFragment extends Fragment {
         return rootView;
     }
 
+    public void setAsLoading(boolean isLoading){
+        if(isLoading){
+            Animation bottomUp = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_up);
+            loading.startAnimation(bottomUp);
+            loading.setVisibility(View.VISIBLE);
+        }else{
+            Animation bottomDown = AnimationUtils.loadAnimation(getActivity(), R.anim.bottom_down);
+            loading.startAnimation(bottomDown);
+            loading.setVisibility(View.GONE);
+        }
+
+    }
+
+    public void resetAdapter(){
+        articlesAdapter.clear();
+        articlesAdapter.notifyDataSetChanged();
+    }
+
+
     private void loadPages() {
-        for(int i = 1;i<3;i++){
+        while (currentPage < 3){
+            setAsLoading(true);
             new PageService(getActivity(),new TaskCompleted<ArrayList<Article>>() {
                 @Override
                 public void onTaskComplete(ArrayList<Article> result) {
                     articlesAdapter.addAll(result);
+                    setAsLoading(false);
                 };
-            }).getArticles(String.format(PAGE_URL,i));
+            }).getArticles(String.format(Keys.SELECTED_PAGE_URL,currentPage));
+            currentPage++;
         }
     }
 

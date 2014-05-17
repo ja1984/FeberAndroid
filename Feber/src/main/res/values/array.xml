@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_categories">
+        <item>Alla</item>
+        <item>Android</item>
+        <item>Bil</item>
+        <item>Film</item>
+        <item>Foto</item>
+        <item>iOS</item>
+        <item>Mac</item>
+        <item>Mobil</item>
+        <item>PC</item>
+        <item>Pryl</item>
+        <item>Spel</item>
+        <item>Vetenskap</item>
+        <item>Video</item>
+        <item>Webb</item>
+    </string-array>
+</resources>

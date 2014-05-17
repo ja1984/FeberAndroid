@@ -9,15 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
 import se.ja1984.feber.R;
 import se.ja1984.feber.Services.PageService;
+
+import java.util.ArrayList;
 
 /**
  * Created by jonathan on 2014-05-16.
@@ -26,6 +24,9 @@ public class ArticleFragment extends Fragment {
     ImageView image;
     TextView article;
     TextView header;
+    TextView temperature;
+    TextView published;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class ArticleFragment extends Fragment {
         image = (ImageView)rootView.findViewById(R.id.imgArticleMainImage);
         article = (TextView)rootView.findViewById(R.id.txtArticleText);
         header = (TextView)rootView.findViewById(R.id.txtArticleHeader);
+        temperature = (TextView)rootView.findViewById(R.id.txtTemperature);
+        published = (TextView)rootView.findViewById(R.id.txtArticlePublished);
 
 
 
@@ -45,12 +48,21 @@ public class ArticleFragment extends Fragment {
             @Override
             public void onTaskComplete(ArrayList<Article> result) {
                 Article _article = result.get(0);
-                header.setText(_article.getHeader());
-                Log.d("Feber html","" + _article.getText());
-                article.setText(Html.fromHtml(_article.getText()));
+
+                Log.d("Feber - image","" + _article.getImageUrl());
+
                 if(_article.getImageUrl() != null || _article.getImageUrl() != "") {
                     Picasso.with(getActivity()).load(_article.getImageUrl()).placeholder(R.drawable.placeholder).into(image);
                 }
+                header.setText(_article.getHeader());
+                article.setText(Html.fromHtml(_article.getText()));
+                published.setText("Publiserad " + _article.getPublished());
+
+                String _temperature = _article.getTemperature();
+                temperature.setText(_temperature);
+                temperature.setBackground(getActivity().getResources().getDrawable(Integer.parseInt(_temperature.substring(0,2).replace(".","")) > 37 ? R.drawable.circle_hot : R.drawable.circle_cold));
+                temperature.setVisibility(View.VISIBLE);
+
             }
         }).getArticle(url);
     }

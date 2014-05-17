@@ -15,6 +15,8 @@ import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import se.ja1984.feber.Fragments.MainFragment;
+import se.ja1984.feber.Helpers.Keys;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -82,7 +84,7 @@ public class NavigationDrawerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         mDrawerListView = (ListView) inflater.inflate(
                 R.layout.fragment_navigation_drawer, container, false);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -93,13 +95,9 @@ public class NavigationDrawerFragment extends Fragment {
         });
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 getActionBar().getThemedContext(),
-                android.R.layout.simple_list_item_activated_1,
+                R.layout.listitem_navdrawer,
                 android.R.id.text1,
-                new String[]{
-                        getString(R.string.title_section1),
-                        getString(R.string.title_section2),
-                        getString(R.string.title_section3),
-                }));
+                getResources().getStringArray(R.array.array_categories)));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
@@ -186,6 +184,52 @@ public class NavigationDrawerFragment extends Fragment {
         mCurrentSelectedPosition = position;
         if (mDrawerListView != null) {
             mDrawerListView.setItemChecked(position, true);
+            switch (position){
+                case 0:
+                    Keys.setDefaultUrl(Keys.DEFAULT_PAGE_URL);
+                    break;
+                case 1:
+                    Keys.setDefaultUrl(Keys.ANDROID_PAGE_URL);
+                    break;
+                case 2:
+                    Keys.setDefaultUrl(Keys.CAR_PAGE_URL);
+                    break;
+                case 3:
+                    Keys.setDefaultUrl(Keys.MOVIE_PAGE_URL);
+                    break;
+                case 4:
+                    Keys.setDefaultUrl(Keys.PHOTO_PAGE_URL);
+                    break;
+                case 5:
+                    Keys.setDefaultUrl(Keys.IOS_PAGE_URL);
+                    break;
+                case 6:
+                    Keys.setDefaultUrl(Keys.MAC_PAGE_URL);
+                    break;
+                case 7:
+                    Keys.setDefaultUrl(Keys.MOBILE_PAGE_URL);
+                    break;
+                case 8:
+                    Keys.setDefaultUrl(Keys.PC_PAGE_URL);
+                    break;
+                case 9:
+                    Keys.setDefaultUrl(Keys.GADGET_PAGE_URL);
+                    break;
+                case 10:
+                    Keys.setDefaultUrl(Keys.GAMES_PAGE_URL);
+                    break;
+                case 11:
+                    Keys.setDefaultUrl(Keys.SCIENCE_PAGE_URL);
+                    break;
+                case 12:
+                    Keys.setDefaultUrl(Keys.VIDEO_PAGE_URL);
+                    break;
+                case 13:
+                    Keys.setDefaultUrl(Keys.WEBB_PAGE_URL);
+                    break;
+            }
+
+            MainFragment.currentPage = 0;
         }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);

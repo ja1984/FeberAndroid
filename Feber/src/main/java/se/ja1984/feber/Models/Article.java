@@ -12,15 +12,21 @@ public class Article {
     private String ImageUrl;
     private String Preamble;
     private String ArticleUrl;
+    private String Temperature;
+    private String Category;
+    private String Published;
 
     public Article(){
 
     }
     public Article(Element element){
+        setCategory(element.className());
         setHeader(element.select("h1.type2 a").first().text());
         setArticleUrl(element.select("h1.type2 a").first().attr("href"));
         setPreamble(element.select("div.preamble a").first().text());
         setText(element.select("div.body1").first().html());
+        setTemperature(element.select("div.tempContainer div.temp").first().text());
+        setPublished(element.select("div.dastags > a:nth-child(3)").first().text());
         Element youtubeImage = element.select("div.youtube > a img").first();
         if(youtubeImage != null){
             String id = youtubeImage.attr("id");
@@ -31,7 +37,14 @@ public class Article {
 
         Element regularImage = element.select("div.img-img  img").first();
         if(regularImage != null){
-            setImageUrl(regularImage.attr("src"));
+
+            String imageUrl = regularImage.attr("src");
+
+            if(imageUrl == ""){
+                imageUrl = regularImage.attr("data-src");
+            }
+
+            setImageUrl(imageUrl);
         }
 
 
@@ -62,5 +75,29 @@ public class Article {
 
     public void setArticleUrl(String articleUrl) {
         ArticleUrl = articleUrl;
+    }
+
+    public String getTemperature() {
+        return Temperature;
+    }
+
+    public void setTemperature(String temperature) {
+        Temperature = temperature;
+    }
+
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String category) {
+        Category = category;
+    }
+
+    public String getPublished() {
+        return Published;
+    }
+
+    public void setPublished(String published) {
+        Published = published;
     }
 }

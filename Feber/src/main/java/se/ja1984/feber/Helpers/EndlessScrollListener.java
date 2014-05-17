@@ -1,15 +1,15 @@
 package se.ja1984.feber.Helpers;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.widget.AbsListView;
-
-import java.util.ArrayList;
-
+import se.ja1984.feber.Fragments.MainFragment;
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
 import se.ja1984.feber.Models.ArticleAdapter;
-import se.ja1984.feber.R;
 import se.ja1984.feber.Services.PageService;
+
+import java.util.ArrayList;
 
 /**
  * Created by jonathan on 2014-05-16.
@@ -22,18 +22,16 @@ public class EndlessScrollListener implements AbsListView.OnScrollListener {
     private boolean loading = true;
     private ArticleAdapter _articles;
     private Activity _activity;
-    private String PAGE_URL = "http://feber.se/?p=%s";
-
-    public EndlessScrollListener() {
-    }
+    private Fragment _fragment;
 
     public EndlessScrollListener(int visibleThreshold) {
         this.visibleThreshold = visibleThreshold;
     }
 
-    public EndlessScrollListener(Activity activity, ArticleAdapter articles) {
+    public EndlessScrollListener(Activity activity,Fragment fragment, ArticleAdapter articles) {
         _articles = articles;
         _activity = activity;
+        _fragment = fragment;
     }
 
     @Override
@@ -42,20 +40,20 @@ public class EndlessScrollListener implements AbsListView.OnScrollListener {
         if (loading) {
             if (totalItemCount > previousTotal) {
                 loading = false;
+                ((MainFragment)_fragment).setAsLoading(false);
                 previousTotal = totalItemCount;
-                currentPage++;
+                MainFragment.currentPage++;
             }
         }
         if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
-            // I load the next page of gigs using a background task,
-            // but you can call any function here.
+            loading = true;
             new PageService(_activity,new TaskCompleted<ArrayList<Article>>() {
                 @Override
                 public void onTaskComplete(ArrayList<Article> result) {
                     _articles.addAll(result);
                 };
-            }).getArticles(String.format(PAGE_URL,currentPage));
-            loading = true;
+            }).getArticles(String.format(Keys.SELECTED_PAGE_URL,MainFragment.currentPage));
+            ((MainFragment)_fragment).setAsLoading(true);
         }
     }
 

@@ -2,26 +2,11 @@ package se.ja1984.feber;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
-import android.view.*;
-import android.widget.AdapterView;
-import android.widget.ListView;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
+import android.view.Menu;
+import android.view.MenuItem;
 import se.ja1984.feber.Fragments.MainFragment;
-import se.ja1984.feber.Models.Article;
-import se.ja1984.feber.Models.ArticleAdapter;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {

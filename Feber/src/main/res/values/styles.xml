@@ -16,7 +16,7 @@
     </style>
     <!-- Override the background and use of logo for the action bar -->
     <style name="Movee" parent="android:style/Widget.Holo.ActionBar">
-        <item name="android:background">#292929</item>
+        <item name="android:background">@color/feber</item>
         <item name="android:displayOptions">useLogo|showHome</item>
     </style>
 
@@ -36,6 +36,21 @@
         <item name="android:textColor">@android:color/primary_text_light</item>
         <item name="android:lineSpacingExtra">6dp</item>
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+    </style>
+
+    <style name="TemperatureMeter">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:text">39.7°</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/circle_hot</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="Article_Published" parent="Article_Preamble">
+        <item name="android:textSize">12sp</item>
     </style>
 
 

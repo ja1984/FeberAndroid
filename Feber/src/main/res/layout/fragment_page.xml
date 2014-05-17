@@ -17,6 +17,14 @@
             android:adjustViewBounds="true"
             android:src="@drawable/placeholder"
             />
+            <TextView
+                android:id="@+id/txtTemperature"
+                style="@style/TemperatureMeter"
+                android:visibility="gone"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -40,6 +48,16 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     />
+                <TextView
+                    android:id="@+id/txtArticlePublished"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ccc"
+                    android:textSize="16sp"
+                    android:text="Monty python - Almost the Truth (The Lawyers cut)"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:singleLine="true"/>
 
             </LinearLayout>
 

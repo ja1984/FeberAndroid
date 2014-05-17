@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="6dp"
     android:paddingBottom="6dp"
     >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="match_parent"
         >
         <TextView
@@ -25,12 +28,35 @@
             android:layout_height="wrap_content"
             android:text="Ingress"
             />
+        <TextView
+            style="@style/Article_Published"
+            android:id="@+id/txtArticlePublished"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Publicerad"
+            />
     </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+
         android:layout_height="match_parent"
         >
-
+        <TextView
+            android:id="@+id/txtArticleTemperature"
+            style="@style/TemperatureMeter"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:id="@+id/txtArticleCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PC"
+            android:textSize="12sp"
+            android:gravity="center_horizontal"
+            />
     </LinearLayout>
 
 
