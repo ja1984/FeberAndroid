@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import se.ja1984.feber.Helpers.Temperature;
 import se.ja1984.feber.R;
 
 import java.util.ArrayList;
@@ -19,8 +20,6 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
     int resource;
 
     static class viewHolder{
-        String url;
-        String iamge;
         TextView header;
         TextView preamble;
         TextView temperature;
@@ -66,7 +65,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         String _temperature = article.getTemperature();
         holder.temperature.setText(_temperature);
-        holder.temperature.setBackground(context.getResources().getDrawable(Integer.parseInt(_temperature.substring(0,2).replace(".","")) > 37 ? R.drawable.circle_hot : R.drawable.circle_cold));
+        holder.temperature.setBackground(context.getResources().getDrawable(new Temperature().setBackgroundBasedOnTemperature(Integer.parseInt(_temperature.substring(0, 2).replace(".", "")))));
         return convertView;
     }
 }

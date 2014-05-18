@@ -2,6 +2,7 @@ package se.ja1984.feber.Services;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -28,7 +29,8 @@ public class PageService {
     public void getArticle(String url){
         new LoadArticlesTask().execute(url);
     }
-    public void getArticles(String url){
+    public void getArticles(String url) {
+        Log.d("Page", "" + url);
         new LoadArticlesTask().execute(url);
     }
 
@@ -68,6 +70,7 @@ public class PageService {
                 articles.addAll(convertToArticle(elements));
             }
             catch (Exception ex){
+                ex.printStackTrace();
                 return  articles;
             }
 

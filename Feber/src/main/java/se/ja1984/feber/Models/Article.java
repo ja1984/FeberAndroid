@@ -26,7 +26,14 @@ public class Article {
         setPreamble(element.select("div.preamble a").first().text());
         setText(element.select("div.body1").first().html());
         setTemperature(element.select("div.tempContainer div.temp").first().text());
-        setPublished(element.select("div.dastags > a:nth-child(3)").first().text());
+        Element published = element.select("div.dastags > a:nth-child(3)").first();
+
+        if(published != null) {
+            setPublished(published.text());
+        }
+        else{
+            setPublished("-");
+        }
         Element youtubeImage = element.select("div.youtube > a img").first();
         if(youtubeImage != null){
             String id = youtubeImage.attr("id");

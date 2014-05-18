@@ -3,6 +3,7 @@ package se.ja1984.feber.Fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
+import se.ja1984.feber.Helpers.Temperature;
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
 import se.ja1984.feber.R;
@@ -55,12 +57,16 @@ public class ArticleFragment extends Fragment {
                     Picasso.with(getActivity()).load(_article.getImageUrl()).placeholder(R.drawable.placeholder).into(image);
                 }
                 header.setText(_article.getHeader());
+                article.setLinksClickable(true);
+                article.setAutoLinkMask(Linkify.ALL);
                 article.setText(Html.fromHtml(_article.getText()));
+                //new Link().setTextViewHTML(article,_article.getText(),getActivity());
+
                 published.setText("Publiserad " + _article.getPublished());
 
                 String _temperature = _article.getTemperature();
                 temperature.setText(_temperature);
-                temperature.setBackground(getActivity().getResources().getDrawable(Integer.parseInt(_temperature.substring(0,2).replace(".","")) > 37 ? R.drawable.circle_hot : R.drawable.circle_cold));
+                temperature.setBackground(getActivity().getResources().getDrawable(new Temperature().setBackgroundBasedOnTemperature(Integer.parseInt(_temperature.substring(0, 2).replace(".", "")))));
                 temperature.setVisibility(View.VISIBLE);
 
             }
