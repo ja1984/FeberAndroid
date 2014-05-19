@@ -50,9 +50,9 @@ public class MainFragment extends Fragment {
             _articles.setOnScrollListener(new EndlessScrollListener(getActivity(),this,articlesAdapter));
             _articles.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                     Intent intent = new Intent(getActivity(), ArticleActivity.class);
-                    intent.putExtra("ArticleUrl", view.getTag(R.string.KEY_URL).toString());
+                    intent.putExtra("Article", (Article)_articles.getAdapter().getItem(position));
                     startActivity(intent);
                 }
             });

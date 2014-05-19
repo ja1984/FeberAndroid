@@ -17,6 +17,14 @@
             android:adjustViewBounds="true"
             android:src="@drawable/placeholder"
             />
+            <ImageView
+            android:id="@+id/imgMainImageOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_play_overlay"
+            android:layout_above="@+id/relativeLayout"
+            android:layout_centerHorizontal="true"/>
             <TextView
                 android:id="@+id/txtTemperature"
                 style="@style/TemperatureMeter"

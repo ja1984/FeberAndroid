@@ -1,12 +1,14 @@
 package se.ja1984.feber.Models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import org.jsoup.nodes.Element;
+import se.ja1984.feber.Helpers.Keys;
 
 /**
  * Created by Jack on 2014-05-15.
  */
-public class Article {
-    private String YOUTUBE_URL = "http://img.youtube.com/vi/%s/maxresdefault.jpg";
+public class Article implements Parcelable {
     private String Header;
     private String Text;
     private String ImageUrl;
@@ -15,10 +17,8 @@ public class Article {
     private String Temperature;
     private String Category;
     private String Published;
+    private String YouTubeId;
 
-    public Article(){
-
-    }
     public Article(Element element){
         setCategory(element.className());
         setHeader(element.select("h1.type2 a").first().text());
@@ -37,7 +37,9 @@ public class Article {
         Element youtubeImage = element.select("div.youtube > a img").first();
         if(youtubeImage != null){
             String id = youtubeImage.attr("id");
-            setImageUrl(String.format(YOUTUBE_URL, id.substring(3,(id.length()))));
+            String youTubeId = id.substring(3,(id.length()));
+            setYouTubeId(youTubeId);
+            setImageUrl(String.format(Keys.YOUTUBE_URL, youTubeId));
             return;
         }
 
@@ -53,20 +55,36 @@ public class Article {
 
             setImageUrl(imageUrl);
         }
+    }
 
-
+    public Article() {
 
     }
 
-    public String getHeader(){return Header;}
-    public void setHeader(String header){this.Header = header;}
+    public String getHeader(){
+        return Header;
+    }
 
-    public String getText() {return Text;}
-    public void setText(String text) {Text = text;}
+    public void setHeader(String header){
+        this.Header = header;
+    }
 
-    public String getImageUrl() {return ImageUrl;}
+    public String getText() {
+        return Text;
+    }
 
-    public void setImageUrl(String imageUrl) {ImageUrl = imageUrl;}
+    public void setText(String text)
+    {
+        Text = text;
+    }
+
+    public String getImageUrl() {
+        return ImageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        ImageUrl = imageUrl;
+    }
 
     public String getPreamble() {
         return Preamble;
@@ -107,4 +125,58 @@ public class Article {
     public void setPublished(String published) {
         Published = published;
     }
+
+    public String getYouTubeId() {
+        return YouTubeId;
+    }
+
+    public void setYouTubeId(String youTubeId) {
+        YouTubeId = youTubeId;
+    }
+
+
+    protected Article(Parcel in) {
+        Header = in.readString();
+        Text = in.readString();
+        ImageUrl = in.readString();
+        Preamble = in.readString();
+        ArticleUrl = in.readString();
+        Temperature = in.readString();
+        Category = in.readString();
+        Published = in.readString();
+        YouTubeId = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(Header);
+        dest.writeString(Text);
+        dest.writeString(ImageUrl);
+        dest.writeString(Preamble);
+        dest.writeString(ArticleUrl);
+        dest.writeString(Temperature);
+        dest.writeString(Category);
+        dest.writeString(Published);
+        dest.writeString(YouTubeId);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Article> CREATOR = new Parcelable.Creator<Article>() {
+        @Override
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
+        }
+
+        @Override
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
+
+
 }
