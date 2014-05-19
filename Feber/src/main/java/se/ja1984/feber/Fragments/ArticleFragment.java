@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 import com.squareup.picasso.Picasso;
 import se.ja1984.feber.Helpers.Temperature;
 import se.ja1984.feber.Interface.TaskCompleted;
@@ -32,11 +34,22 @@ public class ArticleFragment extends Fragment {
     TextView published;
     Activity _activity;
     Article article;
+    FadingActionBarHelper helper;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         _activity = activity;
+
+        helper = new FadingActionBarHelper()
+                .actionBarBackground(R.drawable.actionbar)
+                .headerLayout(R.layout.header)
+                .contentLayout(R.layout.fragment_page)
+                .headerOverlayLayout(R.layout.header_overlay)
+                .parallax(false);
+
+        helper.initActionBar(getActivity());
+
     }
 
     public ArticleFragment(){
@@ -45,9 +58,10 @@ public class ArticleFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_page, container, false);
+        //View rootView = inflater.inflate(R.layout.fragment_page, container, false);
+        View rootView = helper.createView(inflater);
 
-        image = (ImageView)rootView.findViewById(R.id.imgArticleMainImage);
+        image = (ImageView)rootView.findViewById(R.id.image_header);
         text = (TextView)rootView.findViewById(R.id.txtArticleText);
         header = (TextView)rootView.findViewById(R.id.txtArticleHeader);
         temperature = (TextView)rootView.findViewById(R.id.txtTemperature);
@@ -86,7 +100,7 @@ public class ArticleFragment extends Fragment {
             public void onTaskComplete(ArrayList<Article> result) {
                 Article _article = result.get(0);
 
-                Log.d("Feber - image","" + _article.getImageUrl());
+                Log.d("Feber - image", "" + _article.getImageUrl());
 
                 if(_article.getImageUrl() != null || _article.getImageUrl() != "") {
                     Picasso.with(_activity).load(_article.getImageUrl()).placeholder(R.drawable.placeholder).into(image);

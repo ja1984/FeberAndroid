@@ -8,6 +8,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <ImageView
@@ -16,6 +17,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/placeholder"
+             android:visibility="gone"
             />
             <ImageView
             android:id="@+id/imgMainImageOverlay"
