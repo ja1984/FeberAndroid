@@ -5,6 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import se.ja1984.feber.Helpers.Temperature;
 import se.ja1984.feber.R;
 
@@ -15,48 +18,47 @@ import java.util.ArrayList;
  */
 public class ArticleAdapter extends ArrayAdapter<Article> {
 
-    private final Context context;
-    private final ArrayList<Article> articles;
-    int resource;
+    private final Context _context;
+    private final ArrayList<Article> _articles;
+    int _resource;
+    private Temperature _temperatureHelper;
 
     static class viewHolder{
-        TextView header;
-        TextView preamble;
-        TextView temperature;
-        TextView category;
-        TextView published;
+        @InjectView(R.id.txtArticleHeader) TextView header;
+        @InjectView(R.id.txtArticlePreamble) TextView preamble;
+        @InjectView(R.id.txtArticleTemperature) TextView temperature;
+        @InjectView(R.id.txtArticleCategory) TextView category;
+        @InjectView(R.id.txtArticlePublished) TextView published;
+
+        public viewHolder(View view){
+            ButterKnife.inject(this, view);
+        }
+
     }
 
     public ArticleAdapter(Context context, int resource, ArrayList<Article> articles) {
         super(context, resource, articles);
-        this.context = context;
-        this.articles = articles;
-        this.resource = resource;
+        _context = context;
+        _articles = articles;
+        _resource = resource;
+        _temperatureHelper = new Temperature();
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         viewHolder holder;
-        Article article = articles.get(position);
+        Article article = _articles.get(position);
 
         if(convertView == null)
         {
-            convertView = View.inflate(context, resource, null);
-            holder = new viewHolder();
-            holder.header = (TextView)convertView.findViewById(R.id.txtArticleHeader);
-            holder.preamble = (TextView)convertView.findViewById(R.id.txtArticlePreamble);
-            holder.temperature = (TextView)convertView.findViewById(R.id.txtArticleTemperature);
-            holder.category = (TextView)convertView.findViewById(R.id.txtArticleCategory);
-            holder.published = (TextView)convertView.findViewById(R.id.txtArticlePublished);
+            convertView = View.inflate(_context, _resource, null);
+            holder = new viewHolder(convertView);
             convertView.setTag(holder);
         }
         else
         {
             holder = (viewHolder)convertView.getTag();
         }
-
-        convertView.setTag(R.string.KEY_URL,article.getArticleUrl());
 
         holder.header.setText(article.getHeader());
         holder.preamble.setText(article.getPreamble());
@@ -65,7 +67,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         String _temperature = article.getTemperature();
         holder.temperature.setText(_temperature);
-        holder.temperature.setBackground(context.getResources().getDrawable(new Temperature().setBackgroundBasedOnTemperature(Integer.parseInt(_temperature.substring(0, 2).replace(".", "")))));
+        holder.temperature.setBackground(_context.getResources().getDrawable(_temperatureHelper.setBackgroundBasedOnTemperature(Integer.parseInt(_temperature.substring(0, 2).replace(".", "")))));
         return convertView;
     }
 }

@@ -3,13 +3,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+
     <TextView
         android:id="@+id/txtTemperature"
         style="@style/TemperatureMeter"
-        android:visibility="gone"
-        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/imgMainImageOverlay"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
@@ -45,5 +49,13 @@
             android:singleLine="true"/>
 
     </LinearLayout>
-
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/imgMainImageOverlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/play_button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

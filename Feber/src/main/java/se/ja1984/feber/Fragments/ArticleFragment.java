@@ -2,6 +2,8 @@ package se.ja1984.feber.Fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.util.Linkify;
@@ -16,6 +18,7 @@ import butterknife.InjectView;
 import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 import com.squareup.picasso.Picasso;
 import se.ja1984.feber.Helpers.Temperature;
+import se.ja1984.feber.Helpers.Utils;
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
 import se.ja1984.feber.Models.ArticleActivity;
@@ -37,6 +40,7 @@ public class ArticleFragment extends Fragment {
     @InjectView(R.id.txtArticleHeader) TextView header;
     @InjectView(R.id.txtTemperature) TextView temperature;
     @InjectView(R.id.txtArticlePublished) TextView published;
+    @InjectView(R.id.imgMainImageOverlay) ImageView overlay;
 
     @Override
     public void onAttach(Activity activity) {
@@ -63,11 +67,19 @@ public class ArticleFragment extends Fragment {
         //View rootView = inflater.inflate(R.layout.fragment_page, container, false);
         View rootView = helper.createView(inflater);
         ButterKnife.inject(this, rootView);
-        image = (ImageView)rootView.findViewById(R.id.image_header);
-        text = (TextView)rootView.findViewById(R.id.txtArticleText);
-        header = (TextView)rootView.findViewById(R.id.txtArticleHeader);
-        temperature = (TextView)rootView.findViewById(R.id.txtTemperature);
-        published = (TextView)rootView.findViewById(R.id.txtArticlePublished);
+
+        final String youTubeId = ((ArticleActivity) getActivity()).article.getYouTubeId();
+
+        if(!Utils.stringIsNullorEmpty(youTubeId)) {
+            overlay.setVisibility(View.VISIBLE);
+            overlay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + youTubeId));
+                    startActivity(intent);
+                }
+            });
+        }
 
         loadArticle(((ArticleActivity) getActivity()).article);
 

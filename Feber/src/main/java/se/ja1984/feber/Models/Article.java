@@ -2,7 +2,12 @@ package se.ja1984.feber.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
+import org.jsoup.safety.Whitelist;
+
 import se.ja1984.feber.Helpers.Keys;
 
 /**
@@ -21,19 +26,28 @@ public class Article implements Parcelable {
 
     public Article(Element element){
         setCategory(element.className());
-        setHeader(element.select("h1.type2 a").first().text());
+        Element header = element.select("h1.type2 a").first();
+        if(header == null){
+            header = element.select("h1.type1 a").first();
+        }
+
+        setHeader(header == null ? "-" :  header.text());
+
+
         setArticleUrl(element.select("h1.type2 a").first().attr("href"));
         setPreamble(element.select("div.preamble a").first().text());
-        setText(element.select("div.body1").first().html());
+
+        //Remove links in bottom
+        element.select("div.body1 div.text a.linkSelf, div.body1 div.text a.linkBlank, div.body1 div.text-overlay").remove();
+
+        Element text = element.select("div.body1").first();
+        setText(Jsoup.clean(text.html(), Whitelist.basic()));
+
         setTemperature(element.select("div.tempContainer div.temp").first().text());
         Element published = element.select("div.dastags > a:nth-child(3)").first();
 
-        if(published != null) {
-            setPublished(published.text());
-        }
-        else{
-            setPublished("-");
-        }
+        setPublished(published == null ? "-" : published.text());
+
         Element youtubeImage = element.select("div.youtube > a img").first();
         if(youtubeImage != null){
             String id = youtubeImage.attr("id");
