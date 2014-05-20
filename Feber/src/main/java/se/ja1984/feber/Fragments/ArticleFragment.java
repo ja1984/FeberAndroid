@@ -11,7 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 import com.squareup.picasso.Picasso;
 import se.ja1984.feber.Helpers.Temperature;
@@ -27,14 +28,15 @@ import java.util.ArrayList;
  * Created by jonathan on 2014-05-16.
  */
 public class ArticleFragment extends Fragment {
-    ImageView image;
-    TextView text;
-    TextView header;
-    TextView temperature;
-    TextView published;
     Activity _activity;
     Article article;
     FadingActionBarHelper helper;
+
+    @InjectView(R.id.image_header) ImageView image;
+    @InjectView(R.id.txtArticleText) TextView text;
+    @InjectView(R.id.txtArticleHeader) TextView header;
+    @InjectView(R.id.txtTemperature) TextView temperature;
+    @InjectView(R.id.txtArticlePublished) TextView published;
 
     @Override
     public void onAttach(Activity activity) {
@@ -60,7 +62,7 @@ public class ArticleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //View rootView = inflater.inflate(R.layout.fragment_page, container, false);
         View rootView = helper.createView(inflater);
-
+        ButterKnife.inject(this, rootView);
         image = (ImageView)rootView.findViewById(R.id.image_header);
         text = (TextView)rootView.findViewById(R.id.txtArticleText);
         header = (TextView)rootView.findViewById(R.id.txtArticleHeader);
@@ -76,7 +78,7 @@ public class ArticleFragment extends Fragment {
 
         header.setText(_article.getHeader());
         //text.setLinksClickable(true);
-        //text.setAutoLinkMask(Linkify.ALL);
+        text.setAutoLinkMask(Linkify.WEB_URLS);
         text.setText(Html.fromHtml(_article.getText()));
         //new Link().setTextViewHTML(article,_article.getText(),getActivity());
 

@@ -4,6 +4,10 @@ android {
     compileSdkVersion 19
     buildToolsVersion '19.0.1'
 
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 19
@@ -24,4 +28,5 @@ dependencies {
     compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar:3.1.2'
     compile files('libs/jsoup-1.7.3-javadoc.jar')
     compile files('libs/picasso-2.2.0.jar')
+    compile 'com.jakewharton:butterknife:5.0.1'
 }

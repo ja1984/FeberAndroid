@@ -2,23 +2,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/imgArticleMainImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/placeholder"
-        android:visibility="gone"
-        />
-    <ImageView
-        android:id="@+id/imgMainImageOverlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/img_play_overlay"
-        android:layout_above="@+id/relativeLayout"
-        android:layout_centerHorizontal="true"/>
+    android:layout_height="match_parent">
     <TextView
         android:id="@+id/txtTemperature"
         style="@style/TemperatureMeter"
@@ -33,9 +17,10 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:background="@drawable/gradient"
-        android:layout_alignBottom="@+id/imgArticleMainImage"
+        android:id="@+id/relativeLayout"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:id="@+id/relativeLayout">
+        android:layout_alignParentStart="true">
 
         <TextView
             android:id="@+id/txtArticleHeader"
