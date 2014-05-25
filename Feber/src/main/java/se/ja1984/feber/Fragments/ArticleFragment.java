@@ -8,14 +8,12 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.util.Linkify;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 import com.squareup.picasso.Picasso;
 import se.ja1984.feber.Helpers.Temperature;
 import se.ja1984.feber.Helpers.Utils;
@@ -32,30 +30,20 @@ import java.util.ArrayList;
  */
 public class ArticleFragment extends Fragment {
     Activity _activity;
-    Article article;
-    FadingActionBarHelper helper;
 
-    @InjectView(R.id.image_header) ImageView image;
+    @InjectView(R.id.imgArticleMainImage) ImageView image;
     @InjectView(R.id.txtArticleText) TextView text;
     @InjectView(R.id.txtArticleHeader) TextView header;
-    @InjectView(R.id.txtTemperature) TextView temperature;
+    //@InjectView(R.id.txtTemperature) TextView temperature;
     @InjectView(R.id.txtArticlePublished) TextView published;
-    @InjectView(R.id.imgMainImageOverlay) ImageView overlay;
+    @InjectView(R.id.lnrOverlay) LinearLayout overlay;
+    TextView temperature;
+    Article _article;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         _activity = activity;
-
-        helper = new FadingActionBarHelper()
-                .actionBarBackground(R.drawable.actionbar)
-                .headerLayout(R.layout.header)
-                .contentLayout(R.layout.fragment_page)
-                .headerOverlayLayout(R.layout.header_overlay)
-                .parallax(false);
-
-        helper.initActionBar(getActivity());
-
     }
 
     public ArticleFragment(){
@@ -63,9 +51,43 @@ public class ArticleFragment extends Fragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.article,menu);
+        MenuItem item = menu.findItem(R.id.menu_temperature);
+
+        if(item != null) {
+            temperature = (TextView) item.getActionView().findViewById(R.id.txtTemperature);
+
+            if (temperature != null) {
+                String _temperature = _article.getTemperature();
+                temperature.setText(_temperature);
+                temperature.setBackground(_activity.getResources().getDrawable(new Temperature().setBackgroundBasedOnTemperature(Integer.parseInt(_temperature.substring(0, 2).replace(".", "")))));
+                temperature.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.menu_openInBrowser:
+                Intent i = new Intent(Intent.ACTION_VIEW,Uri.parse(_article.getArticleUrl()));
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+
+
+
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //View rootView = inflater.inflate(R.layout.fragment_page, container, false);
-        View rootView = helper.createView(inflater);
+        View rootView = inflater.inflate(R.layout.fragment_page, container, false);
         ButterKnife.inject(this, rootView);
 
         final String youTubeId = ((ArticleActivity) getActivity()).article.getYouTubeId();
@@ -86,8 +108,14 @@ public class ArticleFragment extends Fragment {
         return rootView;
     }
 
-    public void loadArticle(Article _article){
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.setHasOptionsMenu(true);
+    }
 
+    public void loadArticle(Article _article){
+        this._article = _article;
         header.setText(_article.getHeader());
         //text.setLinksClickable(true);
         text.setAutoLinkMask(Linkify.WEB_URLS);
@@ -95,11 +123,6 @@ public class ArticleFragment extends Fragment {
         //new Link().setTextViewHTML(article,_article.getText(),getActivity());
 
         published.setText("Publiserad " + _article.getPublished());
-
-        String _temperature = _article.getTemperature();
-        temperature.setText(_temperature);
-        temperature.setBackground(_activity.getResources().getDrawable(new Temperature().setBackgroundBasedOnTemperature(Integer.parseInt(_temperature.substring(0, 2).replace(".", "")))));
-        temperature.setVisibility(View.VISIBLE);
 
         if(_article.getImageUrl() != null || _article.getImageUrl() != "") {
             Picasso.with(_activity).setDebugging(true);

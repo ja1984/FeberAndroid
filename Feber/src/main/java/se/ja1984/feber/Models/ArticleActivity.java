@@ -23,13 +23,15 @@ public class ArticleActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        //hideActionBar();
         Bundle extras = getIntent().getExtras();
         article = new Article();
         if (extras != null) {
             article = extras.getParcelable("Article");
         }
         getActionBar().setDisplayShowTitleEnabled(false);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page);
 
@@ -41,4 +43,5 @@ public class ArticleActivity extends FragmentActivity {
         }
 
     }
+
 }

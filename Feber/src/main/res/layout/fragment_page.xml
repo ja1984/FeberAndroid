@@ -1,4 +1,5 @@
 <ScrollView
+    android:id="@+id/scrlWrapper"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,70 +9,80 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:visibility="gone"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/imgArticleMainImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/placeholder"
-             android:visibility="gone"
-            />
-            <ImageView
-            android:id="@+id/imgMainImageOverlay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/img_play_overlay"
-            android:layout_above="@+id/relativeLayout"
-            android:layout_centerHorizontal="true"/>
-            <TextView
-                android:id="@+id/txtTemperature"
-                style="@style/TemperatureMeter"
-                android:visibility="gone"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:background="@drawable/gradient"
-                android:layout_alignBottom="@+id/imgArticleMainImage"
-                android:layout_alignParentLeft="true"
-                android:id="@+id/relativeLayout">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/txtArticleHeader"
+                <ImageView
+                    android:id="@+id/imgArticleMainImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#fff"
-                    android:shadowColor="@android:color/black"
-                    android:shadowDx="1"
-                    android:shadowDy="1"
-                    android:shadowRadius="1"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/placeholder"
                     />
+
                 <TextView
-                    android:id="@+id/txtArticlePublished"
-                    android:layout_width="fill_parent"
+                    android:visibility="gone"
+                    android:id="@+id/txtTemperature"
+                    style="@style/TemperatureMeter"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"/>
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                              android:orientation="vertical"
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:padding="10dp"
+                              android:background="@drawable/gradient"
+                              android:layout_alignBottom="@+id/imgArticleMainImage"
+                              android:layout_alignParentLeft="true">
+
+                    <TextView
+                        android:id="@+id/txtArticleHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#fff"
+                        android:shadowColor="@android:color/black"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="1"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/txtArticlePublished"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#ccc"
+                        android:textSize="16sp"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:singleLine="true"/>
+
+                </LinearLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:gravity="center"
+                android:background="@drawable/overlay_button"
+                android:id="@+id/lnrOverlay"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#ccc"
-                    android:textSize="16sp"
-                    android:ellipsize="marquee"
-                    android:marqueeRepeatLimit="marquee_forever"
-                    android:singleLine="true"/>
+                    android:src="@drawable/play_button"
+                    />
 
             </LinearLayout>
-
-        </RelativeLayout>
-
+        </FrameLayout>
 
 
         <TextView
@@ -79,7 +90,6 @@
             android:id="@+id/txtArticleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Detta är test text woop woop"
             android:padding="20dp"
             />
 
