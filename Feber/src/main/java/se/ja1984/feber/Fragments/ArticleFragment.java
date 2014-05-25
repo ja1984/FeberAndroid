@@ -19,7 +19,7 @@ import se.ja1984.feber.Helpers.Temperature;
 import se.ja1984.feber.Helpers.Utils;
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
-import se.ja1984.feber.Models.ArticleActivity;
+import se.ja1984.feber.Activities.ArticleActivity;
 import se.ja1984.feber.R;
 import se.ja1984.feber.Services.PageService;
 
@@ -34,7 +34,6 @@ public class ArticleFragment extends Fragment {
     @InjectView(R.id.imgArticleMainImage) ImageView image;
     @InjectView(R.id.txtArticleText) TextView text;
     @InjectView(R.id.txtArticleHeader) TextView header;
-    //@InjectView(R.id.txtTemperature) TextView temperature;
     @InjectView(R.id.txtArticlePublished) TextView published;
     @InjectView(R.id.lnrOverlay) LinearLayout overlay;
     TextView temperature;
@@ -53,7 +52,7 @@ public class ArticleFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.article,menu);
+        inflater.inflate(R.menu.menu_article,menu);
         MenuItem item = menu.findItem(R.id.menu_temperature);
 
         if(item != null) {
@@ -76,6 +75,9 @@ public class ArticleFragment extends Fragment {
                 Intent i = new Intent(Intent.ACTION_VIEW,Uri.parse(_article.getArticleUrl()));
                 startActivity(i);
                 return true;
+            case R.id.menu_share:
+                shareArticle();
+            return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -83,6 +85,17 @@ public class ArticleFragment extends Fragment {
 
 
 
+    }
+
+    private void shareArticle() {
+        Intent intent=new Intent(android.content.Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+        // Add data to the intent, the receiving app will decide what to do with it.
+        intent.putExtra(Intent.EXTRA_SUBJECT, _article.getHeader());
+        intent.putExtra(Intent.EXTRA_TEXT, _article.getArticleUrl());
+        startActivity(Intent.createChooser(intent, String.format("Dela %s",_article.getHeader())));
     }
 
     @Override
@@ -120,7 +133,7 @@ public class ArticleFragment extends Fragment {
         //text.setLinksClickable(true);
         text.setAutoLinkMask(Linkify.WEB_URLS);
         text.setText(Html.fromHtml(_article.getText()));
-        //new Link().setTextViewHTML(article,_article.getText(),getActivity());
+        //new Link().setTextViewHTML(menu_article,_article.getText(),getActivity());
 
         published.setText("Publiserad " + _article.getPublished());
 
@@ -146,7 +159,7 @@ public class ArticleFragment extends Fragment {
                 text.setLinksClickable(true);
                 text.setAutoLinkMask(Linkify.ALL);
                 text.setText(Html.fromHtml(_article.getText()));
-                //new Link().setTextViewHTML(article,_article.getText(),getActivity());
+                //new Link().setTextViewHTML(menu_article,_article.getText(),getActivity());
 
                 published.setText("Publiserad " + _article.getPublished());
 

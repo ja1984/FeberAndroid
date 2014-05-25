@@ -6,7 +6,7 @@ import android.widget.AbsListView;
 import se.ja1984.feber.Fragments.MainFragment;
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
-import se.ja1984.feber.Models.ArticleAdapter;
+import se.ja1984.feber.Adapters.ArticleAdapter;
 import se.ja1984.feber.Services.PageService;
 
 import java.util.ArrayList;

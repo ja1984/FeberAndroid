@@ -6,4 +6,4 @@
     android:divider="#0D000000"
     android:dividerHeight="1dp"
     android:background="#fff"
-    tools:context="se.ja1984.feber.NavigationDrawerFragment" />
+    tools:context="se.ja1984.feber.Fragments.DrawerFragment" />

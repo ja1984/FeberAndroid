@@ -25,7 +25,7 @@
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:name="se.ja1984.feber.NavigationDrawerFragment"
+        android:name="se.ja1984.feber.Fragments.DrawerFragment"
         tools:layout="@layout/fragment_navigation_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

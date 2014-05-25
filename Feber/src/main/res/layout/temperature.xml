@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="61dp"
                 android:layout_height="61dp"
-                android:padding="10dp"
+                android:padding="7dp"
                 android:layout_gravity="right"
     >
 

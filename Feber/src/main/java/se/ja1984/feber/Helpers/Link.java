@@ -10,7 +10,7 @@ import android.text.util.Linkify;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import se.ja1984.feber.Models.ArticleActivity;
+import se.ja1984.feber.Activities.ArticleActivity;
 import se.ja1984.feber.R;
 
 /**

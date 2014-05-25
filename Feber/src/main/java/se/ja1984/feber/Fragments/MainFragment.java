@@ -16,8 +16,8 @@ import se.ja1984.feber.Helpers.EndlessScrollListener;
 import se.ja1984.feber.Helpers.Keys;
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
-import se.ja1984.feber.Models.ArticleActivity;
-import se.ja1984.feber.Models.ArticleAdapter;
+import se.ja1984.feber.Activities.ArticleActivity;
+import se.ja1984.feber.Adapters.ArticleAdapter;
 import se.ja1984.feber.R;
 import se.ja1984.feber.Services.PageService;
 
