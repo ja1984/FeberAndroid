@@ -15,12 +15,12 @@ import java.util.ArrayList;
 /**
  * Created by jonathan on 2014-05-16.
  */
-public class PageService {
+public class ArticleService {
 
     private Context _context;
     private TaskCompleted _taskCompleted;
 
-    public PageService(Context context, TaskCompleted taskComplete){
+    public ArticleService(Context context, TaskCompleted taskComplete){
         _context = context;
         _taskCompleted = taskComplete;
     }

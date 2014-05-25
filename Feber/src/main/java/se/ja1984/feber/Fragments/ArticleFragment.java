@@ -21,7 +21,7 @@ import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
 import se.ja1984.feber.Activities.ArticleActivity;
 import se.ja1984.feber.R;
-import se.ja1984.feber.Services.PageService;
+import se.ja1984.feber.Services.ArticleService;
 
 import java.util.ArrayList;
 
@@ -145,7 +145,7 @@ public class ArticleFragment extends Fragment {
     }
 
     public void loadArticle(String url, Activity activity){
-        new PageService(_activity,new TaskCompleted<ArrayList<Article>>() {
+        new ArticleService(_activity,new TaskCompleted<ArrayList<Article>>() {
             @Override
             public void onTaskComplete(ArrayList<Article> result) {
                 Article _article = result.get(0);

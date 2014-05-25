@@ -19,7 +19,7 @@ import se.ja1984.feber.Models.Article;
 import se.ja1984.feber.Activities.ArticleActivity;
 import se.ja1984.feber.Adapters.ArticleAdapter;
 import se.ja1984.feber.R;
-import se.ja1984.feber.Services.PageService;
+import se.ja1984.feber.Services.ArticleService;
 
 import java.util.ArrayList;
 
@@ -59,7 +59,6 @@ public class MainFragment extends Fragment {
         }
 
         loadPages();
-        //new LoadPageTask().execute();
         return rootView;
     }
 
@@ -76,16 +75,10 @@ public class MainFragment extends Fragment {
 
     }
 
-    public void resetAdapter(){
-        articlesAdapter.clear();
-        articlesAdapter.notifyDataSetChanged();
-    }
-
-
     private void loadPages() {
         while (currentPage < 3){
             setAsLoading(true);
-            new PageService(getActivity(),new TaskCompleted<ArrayList<Article>>() {
+            new ArticleService(getActivity(),new TaskCompleted<ArrayList<Article>>() {
                 @Override
                 public void onTaskComplete(ArrayList<Article> result) {
                     articlesAdapter.addAll(result);
@@ -96,10 +89,15 @@ public class MainFragment extends Fragment {
         }
     }
 
+    public void resetAdapter(){
+        articlesAdapter.clear();
+        currentPage = 1;
+        loadPages();
+    }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        //((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
 }

@@ -7,7 +7,7 @@ import se.ja1984.feber.Fragments.MainFragment;
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
 import se.ja1984.feber.Adapters.ArticleAdapter;
-import se.ja1984.feber.Services.PageService;
+import se.ja1984.feber.Services.ArticleService;
 
 import java.util.ArrayList;
 
@@ -47,7 +47,7 @@ public class EndlessScrollListener implements AbsListView.OnScrollListener {
         }
         if (!loading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
             loading = true;
-            new PageService(_activity,new TaskCompleted<ArrayList<Article>>() {
+            new ArticleService(_activity,new TaskCompleted<ArrayList<Article>>() {
                 @Override
                 public void onTaskComplete(ArrayList<Article> result) {
                     _articles.addAll(result);

@@ -3,11 +3,9 @@ package se.ja1984.feber.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.safety.Whitelist;
-
 import se.ja1984.feber.Helpers.Keys;
 
 /**
@@ -26,15 +24,21 @@ public class Article implements Parcelable {
 
     public Article(Element element){
         setCategory(element.className());
+
         Element header = element.select("h1.type2 a").first();
         if(header == null){
             header = element.select("h1.type1 a").first();
         }
-
         setHeader(header == null ? "-" :  header.text());
 
 
-        setArticleUrl(element.select("h1.type2 a").first().attr("href"));
+        Log.d("ListArtivle","" + getHeader());
+        Element url = element.select("h1.type2 a").first();
+        if(url == null){
+            url = element.select("h1.type1 a").first();
+        }
+        setArticleUrl(url == null ? "-" :  url.attr("href"));
+
         setPreamble(element.select("div.preamble a").first().text());
 
         //Remove links in bottom
