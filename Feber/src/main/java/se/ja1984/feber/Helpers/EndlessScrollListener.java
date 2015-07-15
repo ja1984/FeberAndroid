@@ -52,7 +52,7 @@ public class EndlessScrollListener implements AbsListView.OnScrollListener {
                 public void onTaskComplete(ArrayList<Article> result) {
                     _articles.addAll(result);
                 };
-            }).getArticles(String.format(Keys.SELECTED_PAGE_URL,MainFragment.currentPage));
+            }).getArticles(String.format(Keys.SELECTED_PAGE_URL,MainFragment.currentPage,(MainFragment.currentPage * 12)));
             ((MainFragment)_fragment).setAsLoading(true);
         }
     }

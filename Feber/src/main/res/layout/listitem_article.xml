@@ -1,55 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:paddingTop="6dp"
-              android:paddingBottom="6dp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="vertical"
-                  android:layout_width="0dp"
-                  android:layout_weight="1"
-                  android:layout_height="match_parent"
-        >
-        <TextView
-            style="@style/Article_Header"
-            android:id="@+id/txtArticleHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rubrik"
-            />
-        <TextView
-            style="@style/Article_Preamble"
-            android:id="@+id/txtArticlePreamble"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ingress"
-            />
-        <TextView
-            style="@style/Article_Published"
-            android:id="@+id/txtArticlePublished"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Publicerad"
-            />
-    </LinearLayout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="vertical"
-                  android:layout_width="wrap_content"
-
-                  android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
         >
         <TextView
             android:id="@+id/txtArticleTemperature"
             style="@style/TemperatureMeter"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
             android:textSize="12sp"
             />
         <TextView
+            android:visibility="gone"
             android:id="@+id/txtArticleCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,6 +29,52 @@
             android:gravity="center_horizontal"
             />
     </LinearLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+            <TextView
+                style="@style/Article_Header"
+                android:id="@+id/txtArticleHeader"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:text="Rubrik"
+                />
+
+            <TextView
+                style="@style/Article_Published"
+                android:id="@+id/txtArticlePublished"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:text="Publicerad"
+                />
+        </LinearLayout>
+        <TextView
+            style="@style/Article_Preamble"
+            android:id="@+id/txtArticlePreamble"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondary_text"
+            android:text="Ingress"
+            />
+    </LinearLayout>
+
 
 
 </LinearLayout>

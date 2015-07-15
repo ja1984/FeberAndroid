@@ -21,10 +21,11 @@ public class Article implements Parcelable {
     private String Category;
     private String Published;
     private String YouTubeId;
+    public Author author;
 
     public Article(Element element){
-        setCategory(element.className());
 
+        setCategory(element.className());
         Element header = element.select("h1.type2 a").first();
         if(header == null){
             header = element.select("h1.type1 a").first();
@@ -52,11 +53,19 @@ public class Article implements Parcelable {
 
         setPublished(published == null ? "-" : published.text());
 
+
+        Element author = element.select(".avatar .writer_icon").first();
+
+        if(author != null){
+            setAuthor(new Author(author.attr("alt"),author.attr("src")));
+        }
+
         Element youtubeImage = element.select("div.youtube > a img").first();
         if(youtubeImage != null){
             String id = youtubeImage.attr("id");
             String youTubeId = id.substring(3,(id.length()));
             setYouTubeId(youTubeId);
+            Element test = element.select("#img"+youTubeId).first();
             setImageUrl(String.format(Keys.YOUTUBE_URL, youTubeId));
             return;
         }
@@ -67,9 +76,10 @@ public class Article implements Parcelable {
 
             String imageUrl = regularImage.attr("src");
 
-            if(imageUrl == ""){
-                imageUrl = regularImage.attr("data-src");
-            }
+            String lazyloadedImageSrc =regularImage.attr("data-src");
+
+            if(lazyloadedImageSrc != null && !lazyloadedImageSrc.isEmpty())
+                imageUrl = lazyloadedImageSrc;
 
             setImageUrl(imageUrl);
         }
@@ -124,6 +134,13 @@ public class Article implements Parcelable {
         return Temperature;
     }
 
+    public int getTemperatureAsInt() {
+        if(Temperature == null) return 0;
+        return Integer.parseInt(Temperature.substring(0, 2).replace(".", ""));
+    }
+
+
+
     public void setTemperature(String temperature) {
         Temperature = temperature;
     }
@@ -152,6 +169,13 @@ public class Article implements Parcelable {
         YouTubeId = youTubeId;
     }
 
+    public void setAuthor(Author author){
+        this.author = author;
+    }
+
+    public Author getAuthor(){
+        return author;
+    }
 
     protected Article(Parcel in) {
         Header = in.readString();
@@ -163,6 +187,7 @@ public class Article implements Parcelable {
         Category = in.readString();
         Published = in.readString();
         YouTubeId = in.readString();
+        author = (Author) in.readValue(Author.class.getClassLoader());
     }
 
     @Override
@@ -181,6 +206,7 @@ public class Article implements Parcelable {
         dest.writeString(Category);
         dest.writeString(Published);
         dest.writeString(YouTubeId);
+        dest.writeValue(author);
     }
 
     @SuppressWarnings("unused")

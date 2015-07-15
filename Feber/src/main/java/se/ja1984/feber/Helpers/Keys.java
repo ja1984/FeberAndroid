@@ -7,7 +7,7 @@ public class Keys {
 
     private Keys(){};
 
-    public static String SELECTED_PAGE_URL = "http://feber.se/?p=%s";
+    public static String SELECTED_PAGE_URL = "http://feber.se/snippets/list5-inline.jsp?count=12&p=%s&pskip=%s&u=";
 
     public static String DEFAULT_PAGE_URL = "http://feber.se/?p=%s";
     public static String ANDROID_PAGE_URL = "http://feber.se/android/?p=%s";
@@ -23,7 +23,7 @@ public class Keys {
     public static String SCIENCE_PAGE_URL = "http://feber.se/vetenskap/?p=%s";
     public static String VIDEO_PAGE_URL = "http://feber.se/video/?p=%s";
     public static String WEBB_PAGE_URL = "http://feber.se/webb/?p=%s";
-    public static String YOUTUBE_URL = "http://img.youtube.com/vi/%s/maxresdefault.jpg";
+    public static String YOUTUBE_URL = "http://i3.ytimg.com/vi/%s/0.jpg";
 
 
     public static void setDefaultUrl(String defaultUrl) {

@@ -3,6 +3,7 @@ package se.ja1984.feber.Activities;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
 import se.ja1984.feber.Fragments.ArticleFragment;
@@ -12,7 +13,7 @@ import se.ja1984.feber.R;
 /**
  * Created by jonathan on 2014-05-16.
  */
-public class ArticleActivity extends FragmentActivity {
+public class ArticleActivity extends AppCompatActivity {
 
     public Article article;
 
@@ -30,7 +31,7 @@ public class ArticleActivity extends FragmentActivity {
         if (extras != null) {
             article = extras.getParcelable("Article");
         }
-        getActionBar().setDisplayShowTitleEnabled(false);
+
 
 
         super.onCreate(savedInstanceState);

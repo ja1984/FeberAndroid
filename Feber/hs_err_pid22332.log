@@ -1,0 +1,140 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=22332, tid=1948
+#
+# JRE version:  (7.0_76-b13) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (24.76-b04 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000280e000):  JavaThread "Unknown thread" [_thread_in_vm, id=1948, stack(0x0000000002910000,0x0000000002a10000)]
+
+Stack: [0x0000000002910000,0x0000000002a10000]
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x000000000280e000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=1948, stack(0x0000000002910000,0x0000000002a10000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 57344K, used 983K [0x00000000eaa80000, 0x00000000eea80000, 0x0000000100000000)
+  eden space 49152K, 2% used [0x00000000eaa80000,0x00000000eab75c80,0x00000000eda80000)
+  from space 8192K, 0% used [0x00000000ee280000,0x00000000ee280000,0x00000000eea80000)
+  to   space 8192K, 0% used [0x00000000eda80000,0x00000000eda80000,0x00000000ee280000)
+ ParOldGen       total 130560K, used 0K [0x00000000c0000000, 0x00000000c7f80000, 0x00000000eaa80000)
+  object space 130560K, 0% used [0x00000000c0000000,0x00000000c0000000,0x00000000c7f80000)
+ PSPermGen       total 21504K, used 697K [0x00000000bae00000, 0x00000000bc300000, 0x00000000c0000000)
+  object space 21504K, 3% used [0x00000000bae00000,0x00000000baeae588,0x00000000bc300000)
+
+Card table byte_map: [0x0000000005bd0000,0x0000000005e00000] byte_map_base: 0x00000000055f9000
+
+Polling page: 0x0000000001000000
+
+Code Cache  [0x0000000002b10000, 0x0000000002d80000, 0x0000000005b10000)
+ total_blobs=38 nmethods=0 adapters=20 free_code_cache=48889Kb largest_free_block=50062528
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.013 loading class 0x0000000002a574b0
+Event: 0.013 loading class 0x0000000002a574b0 done
+Event: 0.013 loading class 0x0000000002a57500
+Event: 0.013 loading class 0x0000000002a57500 done
+Event: 0.013 loading class 0x0000000002a57550
+Event: 0.013 loading class 0x0000000002a57550 done
+Event: 0.013 loading class 0x0000000002a582d0
+Event: 0.013 loading class 0x0000000002a582d0 done
+Event: 0.013 loading class 0x0000000002a57ef0
+Event: 0.013 loading class 0x0000000002a57ef0 done
+
+
+Dynamic libraries:
+0x00007ff64f710000 - 0x00007ff64f743000 	C:\Program Files\Java\jdk1.7.0_76\bin\java.exe
+0x00007ff8be180000 - 0x00007ff8be33c000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff8bbc20000 - 0x00007ff8bbccf000 	C:\WINDOWS\system32\KERNEL32.DLL
+0x00007ff8bb8b0000 - 0x00007ff8bba90000 	C:\WINDOWS\system32\KERNELBASE.dll
+0x00007ff8bdf00000 - 0x00007ff8bdfa6000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x00007ff8bda50000 - 0x00007ff8bdaed000 	C:\WINDOWS\system32\msvcrt.dll
+0x00007ff8bdc30000 - 0x00007ff8bdc8b000 	C:\WINDOWS\system32\sechost.dll
+0x00007ff8bbaf0000 - 0x00007ff8bbc17000 	C:\WINDOWS\system32\RPCRT4.dll
+0x00007ff8bc0e0000 - 0x00007ff8bc22e000 	C:\WINDOWS\system32\USER32.dll
+0x00007ff8bdff0000 - 0x00007ff8be175000 	C:\WINDOWS\system32\GDI32.dll
+0x00007ff8b6960000 - 0x00007ff8b6bce000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.10130.5_none_8475d8205cca41e2\COMCTL32.dll
+0x00007ff8bdfb0000 - 0x00007ff8bdfe6000 	C:\WINDOWS\system32\IMM32.DLL
+0x00007ff8bc640000 - 0x00007ff8bc79b000 	C:\WINDOWS\system32\MSCTF.dll
+0x00000000760a0000 - 0x0000000076172000 	C:\Program Files\Java\jdk1.7.0_76\jre\bin\msvcr100.dll
+0x00000000765c0000 - 0x0000000076d95000 	C:\Program Files\Java\jdk1.7.0_76\jre\bin\server\jvm.dll
+0x00007ff8bc630000 - 0x00007ff8bc638000 	C:\WINDOWS\system32\PSAPI.DLL
+0x00007ff8b5e80000 - 0x00007ff8b5e89000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff8b6be0000 - 0x00007ff8b6c09000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff8bc380000 - 0x00007ff8bc3e9000 	C:\WINDOWS\system32\WS2_32.dll
+0x00007ff8bc3f0000 - 0x00007ff8bc3f8000 	C:\WINDOWS\system32\NSI.dll
+0x0000000002780000 - 0x00000000027ac000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x00007ff8baf20000 - 0x00007ff8baf64000 	C:\WINDOWS\system32\cfgmgr32.dll
+0x00007ff8b9790000 - 0x00007ff8b97b7000 	C:\WINDOWS\SYSTEM32\DEVOBJ.dll
+0x00007ff8bbe10000 - 0x00007ff8bc074000 	C:\WINDOWS\system32\combase.dll
+0x00007ff8baca0000 - 0x00007ff8bad08000 	C:\WINDOWS\SYSTEM32\bcryptPrimitives.dll
+0x00000000765b0000 - 0x00000000765bf000 	C:\Program Files\Java\jdk1.7.0_76\jre\bin\verify.dll
+0x0000000076580000 - 0x00000000765a8000 	C:\Program Files\Java\jdk1.7.0_76\jre\bin\java.dll
+0x0000000076560000 - 0x0000000076575000 	C:\Program Files\Java\jdk1.7.0_76\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Xmx1024M -Dfile.encoding=windows-1252 -Duser.country=GB -Duser.language=en -Duser.variant 
+java_command: com.android.dx.command.Main --dex --output D:\Programmering\FeberAndroid\Feber\build\intermediates\dex\debug D:\Programmering\FeberAndroid\Feber\build\intermediates\classes\debug D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-04cef7845087ae6679a3df79f9735d7cc54ceda5.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-c8947dc620cd7eb0d8ce69849aeed512d19aeb1b.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\butterknife-7.0.1-4480c4b4fa8ef676bec9ce2ed43dc6ec0a63e5c0.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-d63c2ef0b6e6d82b794f975c284c6daa58e1ad2a.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-078d21de5147ba8bda60887983c43ed8a7de1df4.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\picasso-2.5.2-1c765aa58d19a775cc6fb1eb1e5ed411a27822a9.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-ad327ff0d3dfcace0e22f6876cbfef33bcb38dfd.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-8e85a1419ef04bcd7977a343ecb65736f343200c.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\jsoup-1.8.1-7a1a3043a75725a875f32b270c4b2d9e875a1b88.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-0e06cc334265675d786b79c590cdb02f7c1b10fe.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\glide-3.6.0-876bb479b9076c5fb5e855301ba274533887dbea.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-95610076b0f156fb7306520e2179c68bcf6a28ad.jar D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-642856462d3a699f02ad0f8074b09a8b835e56de.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\nodejs\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\TortoiseGit\bin;USERPROFILE\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Users\Jack\AppData\Roaming\npm;C:\Users\Jack\AppData\Local\atom\bin;C:\Users\Jack\AppData\Local\Code\bin
+USERNAME=Jack
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8.1 , 64 bit Build 9600 
+
+CPU:total 4 (4 cores per cpu, 1 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, erms, tsc, tscinvbit, tscinv
+
+Memory: 4k page, physical 12530556k(2383600k free), swap 17501760k(5468k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (24.76-b04) for windows-amd64 JRE (1.7.0_76-b13), built on Dec 18 2014 16:31:25 by "java_re" with unknown MS VC++:1600
+
+time: Tue Jul 14 22:54:46 2015
+elapsed time: 0 seconds
+

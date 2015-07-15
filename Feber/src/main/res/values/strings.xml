@@ -2,13 +2,22 @@
 <resources>
 
     <string name="app_name">800°</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">Example action</string>
-    <string name="action_settings">Settings</string>
     <string name="KEY_URL">1</string>
+
+    <string name="temp">%s°</string>
+    <string name="society">Samhälle</string>
+    <string name="android">Android</string>
+    <string name="car">Bil</string>
+    <string name="movie">Film</string>
+    <string name="photo">Foto</string>
+    <string name="ios">iOS</string>
+    <string name="mac">Mac</string>
+    <string name="web">Webb</string>
+    <string name="video">Video</string>
+    <string name="science">Vetenskap</string>
+    <string name="game">Spel</string>
+    <string name="stuff">Pryl</string>
+    <string name="pc">PC</string>
+    <string name="mobile">Mobil</string>
 
 </resources>
