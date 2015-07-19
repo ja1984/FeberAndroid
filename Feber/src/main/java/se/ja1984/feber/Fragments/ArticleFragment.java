@@ -71,6 +71,9 @@ public class ArticleFragment extends Fragment {
         final String youTubeId = ((ArticleActivity) getActivity()).article.getYouTubeId();
 
         if(!Utils.stringIsNullorEmpty(youTubeId)) {
+
+            youtubeWrapper.setVisibility(View.VISIBLE);
+
             youtubeWrapper.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -41,6 +42,7 @@ public class MainFragment extends Fragment {
 
     @Bind(R.id.articles) ListView list;
     @Bind(R.id.progress)    SwipeRefreshLayout progressBar;
+    @Bind(R.id.empty)    FrameLayout empty;
     ArrayList<Article> articles = new ArrayList<>();
 
     ArticleAdapter adapter;
@@ -54,19 +56,19 @@ public class MainFragment extends Fragment {
         ButterKnife.bind(this, rootView);
 
         adapter = new ArticleAdapter(getActivity(), R.layout.listitem_article_card,articles);
-
+        list.setEmptyView(empty);
         Reservoir.getAsync("old", ArticlesViewModel.class, new ReservoirGetCallback<ArticlesViewModel>() {
             @Override
             public void onSuccess(ArticlesViewModel articlesViewModel) {
                 articles.addAll(articlesViewModel.Articles);
                 adapter.notifyDataSetChanged();
 
-                Snackbar.make(list, R.string.cachedcopy_text, Snackbar.LENGTH_LONG).setAction(R.string.loadnew_cache, new View.OnClickListener() {
+                /*Snackbar.make(list, R.string.cachedcopy_text, Snackbar.LENGTH_LONG).setAction(R.string.loadnew_cache, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         loadPages();
                     }
-                }).show();
+                }).show();*/
 
             }
 
