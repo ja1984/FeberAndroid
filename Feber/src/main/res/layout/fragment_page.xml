@@ -71,6 +71,38 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:id="@+id/youtube"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:background="?android:attr/selectableItemBackground"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:layout_gravity="center_vertical"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_button_youtube"
+                    android:layout_gravity="center_vertical"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:fontFamily="sans-serif-medium"
+                    android:textSize="14sp"
+                    android:text="@string/button_playyoutube"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+
             <TextView
                 style="@style/Article_Text"
                 android:id="@+id/text"
@@ -84,11 +116,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal"
-                android:background="?android:attr/selectableItemBackground"
                 android:paddingLeft="8dp"
                 android:paddingRight="8dp"
                 android:paddingTop="8dp"
-                android:layout_marginBottom="?attr/actionBarSize"
                 >
 
                 <se.ja1984.feber.Helpers.CircularImageView
@@ -100,6 +130,8 @@
                     app:shadow="false"
                     android:layout_marginRight="8dp"
                     />
+
+
                 <TextView
                     android:id="@+id/information"
                     android:layout_width="match_parent"
@@ -111,6 +143,23 @@
 
                     />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="8dp"
+
+                android:background="@color/divider"
+                />
+            <LinearLayout
+                android:id="@+id/comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="?attr/actionBarSize"
+                />
 
 
         </LinearLayout>

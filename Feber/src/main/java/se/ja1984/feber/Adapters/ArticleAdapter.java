@@ -2,6 +2,8 @@ package se.ja1984.feber.Adapters;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.os.Build;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -55,6 +57,14 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         _temperatureHelper = new Temperature();
     }
 
+    @Override public int getViewTypeCount() {
+        return 2;
+    }
+
+    @Override public int getItemViewType(int position) {
+        return MainActivity.hiddenCategories.contains(_articles.get(position).getCategory()) ? 0 : 1;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         viewHolder holder;
@@ -62,7 +72,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         if(convertView == null)
         {
-            convertView = View.inflate(_context, _resource, null);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(getItemViewType(position) == 0 ? R.layout.listitem_article_card_alt : R.layout.listitem_article_card, parent, false);
             holder = new viewHolder(convertView);
             convertView.setTag(holder);
         }
@@ -76,11 +86,17 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         holder.image.setVisibility(MainActivity.hiddenCategories.contains(article.getCategory()) ? View.GONE : View.VISIBLE);
 
-
         holder.title.setText(article.getHeader());
         holder.information.setText(article.getAuthor().getName());
         holder.temp.setText(article.getTemperature());
-        holder.temp.setBackgroundTintList(ColorStateList.valueOf(_context.getResources().getColor(getBackgroundColor(article.getTemperatureAsInt()))));
+
+
+        if (Build.VERSION.SDK_INT < 16) {
+            holder.temp.setBackgroundDrawable(_context.getResources().getDrawable(getBackgroundColor(article.getTemperatureAsInt())));
+        }
+        else{
+            holder.temp.setBackground(_context.getResources().getDrawable(getBackgroundColor(article.getTemperatureAsInt())));
+        }
 
         //holder.preamble.setText(article.getPreamble());
         //holder.category.setText(article.getCategory());
@@ -94,10 +110,10 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
 
     private int getBackgroundColor(int temperature) {
-        if(temperature >= 39) return R.color.hot;
-        if(temperature <= 35) return R.color.cold;
+        if(temperature >= 39) return R.drawable.circle_hot;
+        if(temperature <= 35) return R.drawable.circle_cold;
 
-        return R.color.feber;
+        return R.drawable.circle_feber;
     }
 
 }

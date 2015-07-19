@@ -8,6 +8,7 @@ public class Keys {
     private Keys(){};
 
     public static String SELECTED_PAGE_URL = "http://feber.se/snippets/list5-inline.jsp?count=12&p=%s&pskip=%s&u=";
+    public static String COMMENTS_URL = "http://disqus.com/embed/comments/?base=default&version=cdffa58eaf43b45886330a0000419dd5&f=feber&t_i=%s&s_o=default#1";
 
     public static String DEFAULT_PAGE_URL = "http://feber.se/?p=%s";
     public static String ANDROID_PAGE_URL = "http://feber.se/android/?p=%s";

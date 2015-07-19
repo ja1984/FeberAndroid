@@ -30,10 +30,12 @@ import se.ja1984.feber.Helpers.Utils;
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
 import se.ja1984.feber.Activities.ArticleActivity;
+import se.ja1984.feber.Models.Post;
 import se.ja1984.feber.R;
 import se.ja1984.feber.Services.ArticleService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jonathan on 2014-05-16.
@@ -47,6 +49,8 @@ public class ArticleFragment extends Fragment {
     @Bind(R.id.fab)    FloatingActionButton fab;
     @Bind(R.id.authorImage)    CircularImageView authorImage;
     @Bind(R.id.information) TextView information;
+    @Bind(R.id.comments) LinearLayout comments;
+    @Bind(R.id.youtube)    LinearLayout youtubeWrapper;
 
 
 
@@ -64,22 +68,19 @@ public class ArticleFragment extends Fragment {
         ((ArticleActivity)getActivity()).setSupportActionBar(toolbar);
         ((ArticleActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
         final String youTubeId = ((ArticleActivity) getActivity()).article.getYouTubeId();
 
         if(!Utils.stringIsNullorEmpty(youTubeId)) {
-            //overlay.setVisibility(View.VISIBLE);
-//            overlay.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + youTubeId));
-//                    startActivity(intent);
-//                }
-//            });
+            youtubeWrapper.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube://" + youTubeId)));
+                }
+            });
         }
 
         loadArticle(((ArticleActivity) getActivity()).article);
+
 
 
         return rootView;
@@ -105,18 +106,6 @@ public class ArticleFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_article,menu);
-        // MenuItem item = menu.findItem(R.id.menu_temperature);
-
-//        if(item != null) {
-        //          temperature = (TextView) item.getActionView().findViewById(R.id.txtTemperature);
-
-        //        if (temperature != null) {
-        //          String _temperature = _article.getTemperature();
-        //        temperature.setText(_temperature);
-        //        temperature.setBackground(_activity.getResources().getDrawable(new Temperature().setBackgroundBasedOnTemperature(Integer.parseInt(_temperature.substring(0, 2).replace(".", "")))));
-        //        temperature.setVisibility(View.VISIBLE);
-        //     }
-        // }
     }
 
     @Override
@@ -154,6 +143,25 @@ public class ArticleFragment extends Fragment {
 
     public void loadArticle(Article _article){
         this._article = _article;
+
+        new ArticleService(_activity, new TaskCompleted<List<Post>>() {
+            @Override
+            public void onTaskComplete(List<Post> result) {
+                for(Post post : result){
+                    final View view = _activity.getLayoutInflater().inflate(R.layout.listitem_comment, comments, false);
+                    CircularImageView image = (CircularImageView)view.findViewById(R.id.image);
+                    TextView userName = (TextView)view.findViewById(R.id.username);
+                    TextView comment = (TextView)view.findViewById(R.id.comment);
+
+                    userName.setText(post.author.username);
+                    comment.setText(post.raw_message);
+                    Glide.with(_activity).load(post.author.avatar.permalink).into(image);
+
+                    comments.addView(view);
+                }
+            }
+        }).loadComments(_article.getId());
+
         fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(getBackgroundColor(_article.getTemperatureAsInt()))));
         fab.setImageDrawable(new TextDrawable(_article.getTemperature()));
         collapsingToolbar.setTitle(_article.getHeader());

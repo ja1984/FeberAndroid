@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="72dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
+    android:layout_marginBottom="8dp"
+
     >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +18,7 @@
         android:gravity="center_vertical"
         >
         <TextView
-            android:id="@+id/txtArticleTemperature"
+            android:id="@+id/temp"
             style="@style/TemperatureMeter"
             android:textSize="12sp"
             />
@@ -48,7 +51,7 @@
             >
             <TextView
                 style="@style/Article_Header"
-                android:id="@+id/txtArticleHeader"
+                android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -73,6 +76,44 @@
             android:textColor="@color/secondary_text"
             android:text="Ingress"
             />
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:background="?android:attr/selectableItemBackground"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            >
+
+            <se.ja1984.feber.Helpers.CircularImageView
+                android:id="@+id/authorImage"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:border_color="#EEEEEE"
+                app:border_width="4dp"
+                app:shadow="true"
+                android:layout_marginRight="8dp"
+                />
+            <TextView
+                android:id="@+id/information"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="14sp"
+                android:text="S06E05"
+                />
+        </LinearLayout>
+        <ImageView
+            android:visibility="gone"
+
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_gravity="center"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="8dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="144dp"
+                    android:clipToPadding="false"
+
+                    >
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="144dp"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true"
+                        />
+
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary_text"
+                    android:textSize="18dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:gravity="center_vertical"
+ />
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    >
+
+                    <se.ja1984.feber.Helpers.CircularImageView
+                        android:id="@+id/authorImage"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:border_color="#EEEEEE"
+                        app:border_width="4dp"
+                        app:shadow="true"
+                        android:layout_marginRight="8dp"
+                        />
+                    <TextView
+                        android:id="@+id/information"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="14sp"
+                        android:text="S06E05"
+                        />
+
+
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/temp"
+                style="@style/TemperatureMeter"
+                 />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

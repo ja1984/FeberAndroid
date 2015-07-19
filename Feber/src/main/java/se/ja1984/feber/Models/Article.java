@@ -21,11 +21,13 @@ public class Article implements Parcelable {
     private String Category;
     private String Published;
     private String YouTubeId;
+    private String Id;
     public Author author;
 
     public Article(Element element){
 
         setCategory(element.className());
+        setId(element.id());
         Element header = element.select("h1.type2 a").first();
         if(header == null){
             header = element.select("h1.type1 a").first();
@@ -95,6 +97,13 @@ public class Article implements Parcelable {
 
     public void setHeader(String header){
         this.Header = header;
+    }
+    public String getId(){
+        return Id;
+    }
+
+    public void setId(String id){
+        this.Id = id.replace("article","");
     }
 
     public String getText() {
@@ -180,6 +189,7 @@ public class Article implements Parcelable {
     protected Article(Parcel in) {
         Header = in.readString();
         Text = in.readString();
+        Id = in.readString();
         ImageUrl = in.readString();
         Preamble = in.readString();
         ArticleUrl = in.readString();
@@ -199,6 +209,7 @@ public class Article implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(Header);
         dest.writeString(Text);
+        dest.writeString(Id);
         dest.writeString(ImageUrl);
         dest.writeString(Preamble);
         dest.writeString(ArticleUrl);
