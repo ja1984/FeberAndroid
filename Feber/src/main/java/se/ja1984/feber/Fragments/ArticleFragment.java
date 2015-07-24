@@ -48,6 +48,7 @@ public class ArticleFragment extends Fragment {
     @Bind(R.id.collapsing_toolbar)    CollapsingToolbarLayout collapsingToolbar;
     @Bind(R.id.backdrop)    ImageView image;
     @Bind(R.id.text)    ActiveTextView text;
+    @Bind(R.id.category)    TextView category;
     @Bind(R.id.fab)    FloatingActionButton fab;
     @Bind(R.id.authorImage)    CircularImageView authorImage;
     @Bind(R.id.information) TextView information;
@@ -178,6 +179,8 @@ public class ArticleFragment extends Fragment {
                 }
             }
         }).loadComments(_article.getId());
+
+        category.setText(_article.getCompleteCategory());
 
         fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(getBackgroundColor(_article.getTemperatureAsInt()))));
         fab.setImageDrawable(new TextDrawable(_article.getTemperature()));

@@ -19,6 +19,7 @@ public class Article implements Parcelable {
     private String ArticleUrl;
     private String Temperature;
     private String Category;
+    private String CompleteCategory;
     private String Published;
     private String YouTubeId;
     private String Id;
@@ -43,6 +44,11 @@ public class Article implements Parcelable {
         setArticleUrl(url == null ? "-" :  url.attr("href"));
 
         setPreamble(element.select("div.preamble a").first().text());
+
+        setCompleteCategory(element.select("span.bodyCat").first().text());
+
+
+
 
         //Remove links in bottom
         element.select("div.body1 div.text a.linkSelf, div.body1 div.text a.linkBlank, div.body1 div.text-overlay, span.bodyCat").remove();
@@ -162,6 +168,14 @@ public class Article implements Parcelable {
         Category = category;
     }
 
+    public String getCompleteCategory() {
+        return CompleteCategory;
+    }
+
+    public void setCompleteCategory(String completeCategory) {
+        CompleteCategory = completeCategory;
+    }
+
     public String getPublished() {
         return Published;
     }
@@ -195,6 +209,7 @@ public class Article implements Parcelable {
         ArticleUrl = in.readString();
         Temperature = in.readString();
         Category = in.readString();
+        CompleteCategory = in.readString();
         Published = in.readString();
         YouTubeId = in.readString();
         author = (Author) in.readValue(Author.class.getClassLoader());
@@ -215,6 +230,7 @@ public class Article implements Parcelable {
         dest.writeString(ArticleUrl);
         dest.writeString(Temperature);
         dest.writeString(Category);
+        dest.writeString(CompleteCategory);
         dest.writeString(Published);
         dest.writeString(YouTubeId);
         dest.writeValue(author);
