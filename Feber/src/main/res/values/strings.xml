@@ -22,5 +22,12 @@
     <string name="cachedcopy_text">Visar cachade artiklar medans nya laddas</string>
     <string name="loadnew_cache">Ladda nya</string>
     <string name="button_playyoutube">Spela youtube klipp</string>
+    <string name="message_no_comments">Inga kommentarer</string>
+    <string name="title_activity_filter">Filtrering</string>
+    <string name="action_settings">Inställningar</string>
+    <string name="action_filter">Filtrering</string>
+    <string name="settings_cache_cleararticles">Rensa cachade artiklar</string>
+    <string name="settings_cache_clearread">Rensa lästa artiklar</string>
+    <string name="settings_header_cache">Cache</string>
 
 </resources>

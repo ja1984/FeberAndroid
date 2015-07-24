@@ -11,31 +11,33 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
-import android.util.Log;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
+import com.laurencedawson.activetextview.ActiveTextView;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import se.ja1984.feber.Activities.ArticleActivity;
+import se.ja1984.feber.FeberApplication;
 import se.ja1984.feber.Helpers.CircularImageView;
-import se.ja1984.feber.Helpers.Temperature;
 import se.ja1984.feber.Helpers.TextDrawable;
 import se.ja1984.feber.Helpers.Utils;
 import se.ja1984.feber.Interface.TaskCompleted;
 import se.ja1984.feber.Models.Article;
-import se.ja1984.feber.Activities.ArticleActivity;
 import se.ja1984.feber.Models.Post;
 import se.ja1984.feber.R;
 import se.ja1984.feber.Services.ArticleService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by jonathan on 2014-05-16.
@@ -45,12 +47,13 @@ public class ArticleFragment extends Fragment {
     @Bind(R.id.toolbar)    Toolbar toolbar;
     @Bind(R.id.collapsing_toolbar)    CollapsingToolbarLayout collapsingToolbar;
     @Bind(R.id.backdrop)    ImageView image;
-    @Bind(R.id.text)    TextView text;
+    @Bind(R.id.text)    ActiveTextView text;
     @Bind(R.id.fab)    FloatingActionButton fab;
     @Bind(R.id.authorImage)    CircularImageView authorImage;
     @Bind(R.id.information) TextView information;
     @Bind(R.id.comments) LinearLayout comments;
     @Bind(R.id.youtube)    LinearLayout youtubeWrapper;
+    @Bind(R.id.nocomments)    TextView nocomments;
 
 
 
@@ -122,6 +125,9 @@ public class ArticleFragment extends Fragment {
             case R.id.menu_share:
                 shareArticle();
                 return true;
+            case R.id.home:
+                super.onOptionsItemSelected(item);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -147,9 +153,17 @@ public class ArticleFragment extends Fragment {
     public void loadArticle(Article _article){
         this._article = _article;
 
+
         new ArticleService(_activity, new TaskCompleted<List<Post>>() {
             @Override
             public void onTaskComplete(List<Post> result) {
+
+                if(result ==null || result.size() == 0){
+                    nocomments.setVisibility(View.VISIBLE);
+                    comments.setVisibility(View.GONE);
+                    return;
+                }
+
                 for(Post post : result){
                     final View view = _activity.getLayoutInflater().inflate(R.layout.listitem_comment, comments, false);
                     CircularImageView image = (CircularImageView)view.findViewById(R.id.image);
@@ -168,23 +182,11 @@ public class ArticleFragment extends Fragment {
         fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(getBackgroundColor(_article.getTemperatureAsInt()))));
         fab.setImageDrawable(new TextDrawable(_article.getTemperature()));
         collapsingToolbar.setTitle(_article.getHeader());
-        //header.setText(_article.getHeader());
-
-        //text.setMovementMethod(LinkMovementMethod.getInstance());
-        text.setClickable(false);
-        //text.setLinksClickable(false);
-        //text.setFocusable(false);
-
         text.setText(Html.fromHtml(_article.getText()));
-        //text.setMovementMethod(LinkMovementMethod.getInstance());
 
         Glide.with(_activity).load(_article.getAuthor().getImage()).into(authorImage);
 
         information.setText(_article.getAuthor().getName());
-
-        //new Link().setTextViewHTML(menu_article,_article.getText(),getActivity());
-
-        //published.setText("Publiserad " + _article.getPublished());
 
         if(_article.getImageUrl() != null || _article.getImageUrl() != "") {
             Glide.with(_activity).load(_article.getImageUrl()).placeholder(R.drawable.placeholder).into(image);

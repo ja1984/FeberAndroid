@@ -1,0 +1,16 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/settings_header_cache" >
+        <Preference
+            android:key="pref_cleararticles"
+            android:title="@string/settings_cache_cleararticles"
+            />
+        <Preference
+            android:key="pref_clearread"
+            android:title="@string/settings_cache_clearread"
+            />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

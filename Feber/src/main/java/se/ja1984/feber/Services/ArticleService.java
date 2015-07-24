@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.JsonDataException;
 import com.squareup.moshi.Moshi;
 
 import org.jsoup.Jsoup;
@@ -127,15 +128,19 @@ public class ArticleService {
 
                 Moshi moshi = new Moshi.Builder().build();
                 JsonAdapter<DisqusResponse> adapter = moshi.adapter(DisqusResponse.class);
-                DisqusResponse res = adapter.fromJson(test);
-
-                return res.response.posts;
+                try{
+                    DisqusResponse res = adapter.fromJson(test);
+                    return res.response.posts;
+                }
+                catch (JsonDataException e){
+                    e.printStackTrace();
+                    return null;
+                }
 
             } catch (IOException e) {
                 e.printStackTrace();
+                return null;
             }
-
-            return null;
         }
 
         @Override

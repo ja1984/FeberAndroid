@@ -2,18 +2,22 @@ package se.ja1984.feber.Adapters;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Build;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import se.ja1984.feber.FeberApplication;
 import se.ja1984.feber.Helpers.CircularImageView;
 import se.ja1984.feber.Helpers.Temperature;
 import se.ja1984.feber.MainActivity;
@@ -42,6 +46,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         @Bind(R.id.image) ImageView image;
         @Bind(R.id.authorImage)        CircularImageView authorImage;
         @Bind(R.id.temp)        TextView temp;
+        @Bind(R.id.container)
+        LinearLayout wrapper;
+
 
         public viewHolder(View view){
             ButterKnife.bind(this, view);
@@ -86,6 +93,9 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
         holder.image.setVisibility(MainActivity.hiddenCategories.contains(article.getCategory()) ? View.GONE : View.VISIBLE);
 
+        holder.wrapper.setBackgroundColor(_context.getResources().getColor(FeberApplication.readArticles.contains(article.getId()) ? R.color.card_read : R.color.card_default));
+
+
         holder.title.setText(article.getHeader());
         holder.information.setText(article.getAuthor().getName());
         holder.temp.setText(article.getTemperature());
@@ -97,14 +107,6 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         else{
             holder.temp.setBackground(_context.getResources().getDrawable(getBackgroundColor(article.getTemperatureAsInt())));
         }
-
-        //holder.preamble.setText(article.getPreamble());
-        //holder.category.setText(article.getCategory());
-        //holder.published.setText("Publiserad " + article.getPublished());
-
-        String _temperature = article.getTemperature();
-        //holder.temperature.setText(_temperature);
-        //holder.temperature.setBackground(_context.getResources().getDrawable(_temperatureHelper.setBackgroundBasedOnTemperature(Integer.parseInt(_temperature.substring(0, 2).replace(".", "")))));
         return convertView;
     }
 

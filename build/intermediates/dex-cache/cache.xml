@@ -2,18 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\gson-2.2.4-ad98d81375ae49eac9b175323ac339a57182d597.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.jakewharton\disklrucache\2.0.2\93b399470e72c0bc8cb52379943b63c9aa586cd8\disklrucache-2.0.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="93b399470e72c0bc8cb52379943b63c9aa586cd8">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\disklrucache-2.0.2-a6b805c57a114a85747d74d9398f40868851e212.jar" />
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-ad327ff0d3dfcace0e22f6876cbfef33bcb38dfd.jar" />
     </item>
     <item
         jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\commons-io\commons-io\2.4\b1b6ea3b7e4aa4f492509a4952029cd8e48019ad\commons-io-2.4.jar"
@@ -23,11 +16,39 @@
         <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\commons-io-2.4-b6ad81ed12c43a6f9ccf7c8dad43ba053f8ac7a2.jar" />
     </item>
     <item
-        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\jars\classes.jar"
+        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-0e06cc334265675d786b79c590cdb02f7c1b10fe.jar" />
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-8e85a1419ef04bcd7977a343ecb65736f343200c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\library-2.4.0-e26b49bc8e6de7d5dd5f571d0e320b62229fd38b.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.jakewharton\disklrucache\2.0.2\93b399470e72c0bc8cb52379943b63c9aa586cd8\disklrucache-2.0.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="93b399470e72c0bc8cb52379943b63c9aa586cd8">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\disklrucache-2.0.2-a6b805c57a114a85747d74d9398f40868851e212.jar" />
+    </item>
+    <item
+        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-c8947dc620cd7eb0d8ce69849aeed512d19aeb1b.jar" />
+    </item>
+    <item
+        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-642856462d3a699f02ad0f8074b09a8b835e56de.jar" />
     </item>
     <item
         jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
@@ -37,6 +58,20 @@
         <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-95610076b0f156fb7306520e2179c68bcf6a28ad.jar" />
     </item>
     <item
+        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\org.jsoup\jsoup\1.8.1\1eb6690b0c629d7000c77a72df5e822fb974f521\jsoup-1.8.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1eb6690b0c629d7000c77a72df5e822fb974f521">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\jsoup-1.8.1-7a1a3043a75725a875f32b270c4b2d9e875a1b88.jar" />
+    </item>
+    <item
+        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.github.machinarius\preferencefragment\0.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="648463e00c6883d01b6c11a6781776203334b6fc">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-b0bf026343c03192cf274ab32a46bfa90d941d57.jar" />
+    </item>
+    <item
         jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.mikepenz\materialdrawer\3.1.2\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -44,11 +79,25 @@
         <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-078d21de5147ba8bda60887983c43ed8a7de1df4.jar" />
     </item>
     <item
-        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.anupcowkur\reservoir\2.0\jars\classes.jar"
+        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.2.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="b31aabaca6fa2a82ebe1c418eb2ed37304dd23c2">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-06a0cbbb7cf04b774d8b80473de8f3c90cece169.jar" />
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-0e06cc334265675d786b79c590cdb02f7c1b10fe.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.4.0\5b72bf48563ea8410e650de14aa33ff69a3e8c35\okio-1.4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5b72bf48563ea8410e650de14aa33ff69a3e8c35">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\okio-1.4.0-0c50d16ff9304c26675040c3f27fae00b5c4c94a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jack\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-04cef7845087ae6679a3df79f9735d7cc54ceda5.jar" />
     </item>
     <item
         jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.squareup.moshi\moshi\0.9.0\f066cb67e606de3e8ec92582a1b0ebae2b08fcc7\moshi-0.9.0.jar"
@@ -65,20 +114,6 @@
         <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\glide-3.6.0-876bb479b9076c5fb5e855301ba274533887dbea.jar" />
     </item>
     <item
-        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\picasso-2.5.2-1c765aa58d19a775cc6fb1eb1e5ed411a27822a9.jar" />
-    </item>
-    <item
-        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-c8947dc620cd7eb0d8ce69849aeed512d19aeb1b.jar" />
-    </item>
-    <item
         jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.mikepenz\iconics\1.2.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -86,53 +121,11 @@
         <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-d63c2ef0b6e6d82b794f975c284c6daa58e1ad2a.jar" />
     </item>
     <item
-        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\org.jsoup\jsoup\1.8.1\1eb6690b0c629d7000c77a72df5e822fb974f521\jsoup-1.8.1.jar"
+        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="1eb6690b0c629d7000c77a72df5e822fb974f521">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\jsoup-1.8.1-7a1a3043a75725a875f32b270c4b2d9e875a1b88.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\butterknife-7.0.1-4480c4b4fa8ef676bec9ce2ed43dc6ec0a63e5c0.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jack\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-04cef7845087ae6679a3df79f9735d7cc54ceda5.jar" />
-    </item>
-    <item
-        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-642856462d3a699f02ad0f8074b09a8b835e56de.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.4.0\5b72bf48563ea8410e650de14aa33ff69a3e8c35\okio-1.4.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="5b72bf48563ea8410e650de14aa33ff69a3e8c35">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\okio-1.4.0-0c50d16ff9304c26675040c3f27fae00b5c4c94a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\io.reactivex\rxandroid\0.24.0\42dab493b8f74b164e082f281480c9d493ff89da\rxandroid-0.24.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="42dab493b8f74b164e082f281480c9d493ff89da">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\rxandroid-0.24.0-ee2d89dd68eb225af1217501283db5b98fc07862.jar" />
-    </item>
-    <item
-        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-ad327ff0d3dfcace0e22f6876cbfef33bcb38dfd.jar" />
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\gson-2.2.4-ad98d81375ae49eac9b175323ac339a57182d597.jar" />
     </item>
     <item
         jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.0.4\a607b0e12d2de769dc219e00b60a9b3d9e730d\rxjava-1.0.4.jar"
@@ -142,11 +135,32 @@
         <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\rxjava-1.0.4-6211d9a3e8d34e50307bdf31c535a096ab9e6f4e.jar" />
     </item>
     <item
-        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.melnykov\floatingactionbutton\1.3.0\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-8e85a1419ef04bcd7977a343ecb65736f343200c.jar" />
+        sha1="8c6ebb7d087d1a30bf84356bd2aecf85309fc024">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-637fac0adf664e6b6ff2489f3cedc1f02d165dea.jar" />
+    </item>
+    <item
+        jar="D:\Programmering\FeberAndroid\Feber\build\intermediates\exploded-aar\com.anupcowkur\reservoir\2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b31aabaca6fa2a82ebe1c418eb2ed37304dd23c2">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\classes-06a0cbbb7cf04b774d8b80473de8f3c90cece169.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\io.reactivex\rxandroid\0.24.0\42dab493b8f74b164e082f281480c9d493ff89da\rxandroid-0.24.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="42dab493b8f74b164e082f281480c9d493ff89da">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\rxandroid-0.24.0-ee2d89dd68eb225af1217501283db5b98fc07862.jar" />
+    </item>
+    <item
+        jar="C:\Users\Jack\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="D:\Programmering\FeberAndroid\Feber\build\intermediates\pre-dexed\debug\butterknife-7.0.1-4480c4b4fa8ef676bec9ce2ed43dc6ec0a63e5c0.jar" />
     </item>
 
 </items>

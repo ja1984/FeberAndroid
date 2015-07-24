@@ -45,7 +45,7 @@ public class Article implements Parcelable {
         setPreamble(element.select("div.preamble a").first().text());
 
         //Remove links in bottom
-        element.select("div.body1 div.text a.linkSelf, div.body1 div.text a.linkBlank, div.body1 div.text-overlay").remove();
+        element.select("div.body1 div.text a.linkSelf, div.body1 div.text a.linkBlank, div.body1 div.text-overlay, span.bodyCat").remove();
 
         Element text = element.select("div.body1").first();
         setText(Jsoup.clean(text.html(), Whitelist.basic()));

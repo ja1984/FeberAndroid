@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/secondary_text"
             android:textSize="14sp"
+            android:linksClickable="true"
             android:text="Detta är min kommentar!"/>
 
     </LinearLayout>

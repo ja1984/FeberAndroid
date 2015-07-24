@@ -1,7 +1,10 @@
 <FrameLayout
+    android:id="@+id/wrapper"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    >
 
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -34,9 +37,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            style="?android:attr/progressBarStyleLarge"
+            style="?android:attr/progressBarStyle"
 
             />
 
     </FrameLayout>
+
 </FrameLayout>

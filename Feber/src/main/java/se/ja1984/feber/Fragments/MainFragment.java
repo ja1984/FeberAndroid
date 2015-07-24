@@ -26,6 +26,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import se.ja1984.feber.Activities.ArticleActivity;
 import se.ja1984.feber.Adapters.ArticleAdapter;
+import se.ja1984.feber.FeberApplication;
 import se.ja1984.feber.Helpers.EndlessScrollListener;
 import se.ja1984.feber.Helpers.Keys;
 import se.ja1984.feber.Interface.TaskCompleted;
@@ -94,8 +95,17 @@ public class MainFragment extends Fragment {
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                    Article article = (Article) list.getAdapter().getItem(position);
+
+
+                    if(!FeberApplication.readArticles.contains(article.getId())) {
+                        FeberApplication.readArticles = FeberApplication.readArticles + article.getId();
+                    }
+
+                    list.invalidateViews();
+
                     Intent intent = new Intent(getActivity(), ArticleActivity.class);
-                    intent.putExtra("Article", (Article) list.getAdapter().getItem(position));
+                    intent.putExtra("Article", article);
                     startActivity(intent);
                 }
             });
@@ -115,7 +125,7 @@ public class MainFragment extends Fragment {
 
         ArrayList<String> urls = new ArrayList<>();
 
-        for(int i = 0; i <= 2;i++){
+        for(int i = 0; i <= 0;i++){
             urls.add(String.format(Keys.SELECTED_PAGE_URL,i, (i * 12)));
         }
 
@@ -140,7 +150,7 @@ public class MainFragment extends Fragment {
 
                 adapter.notifyDataSetChanged();
                 setAsLoading(false);
-                currentPage = 2;
+                currentPage = 0;
             };
         }).getArticles(urls.toArray(new String[0]));
 
@@ -165,7 +175,8 @@ public class MainFragment extends Fragment {
     }
 
     public void update(){
-        adapter.notifyDataSetInvalidated();
+        list.invalidateViews();
+        //adapter.notifyDataSetInvalidated();
     }
 
     @Override

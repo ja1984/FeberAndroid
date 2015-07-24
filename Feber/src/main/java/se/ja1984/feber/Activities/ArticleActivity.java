@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
+import android.view.MenuItem;
 import android.view.View;
 import se.ja1984.feber.Fragments.ArticleFragment;
 import se.ja1984.feber.Models.Article;
@@ -44,6 +45,17 @@ public class ArticleActivity extends AppCompatActivity {
             getFragmentManager().beginTransaction().add(R.id.container, fragment,"ARTICLE").commit();
         }
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

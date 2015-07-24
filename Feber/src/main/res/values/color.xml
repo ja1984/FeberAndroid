@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="hot">#f7520c</color>
+    <color name="hot_pressed">#f98756</color>
     <color name="cold">#4ebbe8</color>
     <color name="feber">#292929</color>
     <color name="feber_transparent">#33292929</color>
-
 
     <color name="primary">#333333</color>
     <color name="primary_dark">#292929</color>
@@ -14,6 +14,10 @@
     <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
+
+
+    <color name="card_default">#ffffff</color>
+    <color name="card_read">#efefef</color>
 
 
 </resources>
