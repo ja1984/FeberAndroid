@@ -42,6 +42,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
         //@Bind(R.id.txtArticleTemperature) TextView temperature;
         //@Bind(R.id.txtArticleCategory) TextView category;
         @Bind(R.id.title) TextView title;
+        @Bind(R.id.preamble) TextView preamble;
         @Bind(R.id.information) TextView information;
         @Bind(R.id.image) ImageView image;
         @Bind(R.id.authorImage)        CircularImageView authorImage;
@@ -97,6 +98,7 @@ public class ArticleAdapter extends ArrayAdapter<Article> {
 
 
         holder.title.setText(article.getHeader());
+        holder.preamble.setText(article.getPreamble());
         holder.information.setText(article.getAuthor().getName());
         holder.temp.setText(article.getTemperature());
 

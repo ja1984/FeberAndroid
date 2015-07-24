@@ -44,21 +44,41 @@
             android:layout_marginTop="-20dp"
             />
 
-        <TextView
-            android:id="@+id/title"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/primary_text"
-            android:textSize="18dp"
-            android:fontFamily="sans-serif-medium"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:gravity="center_vertical"
+            android:orientation="vertical"
             android:layout_marginTop="-15dp"
 
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            >
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_text"
+                android:textSize="16dp"
+                android:fontFamily="sans-serif-medium"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:gravity="center_vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/preamble"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
+                android:textSize="14dp"
+                android:fontFamily="sans-serif-medium"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:gravity="center_vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/wrapper"
@@ -71,11 +91,11 @@
 
             <se.ja1984.feber.Helpers.CircularImageView
                 android:id="@+id/authorImage"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 app:border_color="#EEEEEE"
-                app:border_width="4dp"
-                app:shadow="true"
+                app:border_width="0"
+                app:shadow="false"
                 android:layout_marginRight="8dp"
                 />
             <TextView

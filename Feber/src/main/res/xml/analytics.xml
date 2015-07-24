@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="ga_sessionTimeout">300</integer>
+    <bool name="ga_autoActivityTracking">true</bool>
+    <bool name="ga_anonymizeIp">true</bool>
+    <string name="ga_trackingId">UA-65567698-1</string>
+
+    <!-- The screen names that will appear in reports -->
+    <screenName name="se.ja1984.feber.MainActivity">MainActivity</screenName>
+    <screenName name="se.ja1984.feber.Activities.ArticleActivity">ArticleActivity</screenName>
+    <screenName name="se.ja1984.feber.Activities.FilterActivity">FilterActivity</screenName>
+    <screenName name="se.ja1984.feber.Activities.SettingsActivity">SettingsActicity</screenName>
+</resources>

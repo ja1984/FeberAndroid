@@ -26,7 +26,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import se.ja1984.feber.Activities.ArticleActivity;
 import se.ja1984.feber.Adapters.ArticleAdapter;
+import se.ja1984.feber.BuildConfig;
 import se.ja1984.feber.FeberApplication;
+import se.ja1984.feber.Helpers.Analytics;
 import se.ja1984.feber.Helpers.EndlessScrollListener;
 import se.ja1984.feber.Helpers.Keys;
 import se.ja1984.feber.Interface.TaskCompleted;
@@ -45,6 +47,8 @@ public class MainFragment extends Fragment {
     @Bind(R.id.progress)    SwipeRefreshLayout progressBar;
     @Bind(R.id.empty)    FrameLayout empty;
     ArrayList<Article> articles = new ArrayList<>();
+
+    int pagesToLoad = BuildConfig.DEBUG ? 1 : 2;
 
     ArticleAdapter adapter;
     public static int currentPage = 0;
@@ -104,6 +108,8 @@ public class MainFragment extends Fragment {
 
                     list.invalidateViews();
 
+                    Analytics.trackClick(getActivity(),"Article",article.getArticleUrl());
+
                     Intent intent = new Intent(getActivity(), ArticleActivity.class);
                     intent.putExtra("Article", article);
                     startActivity(intent);
@@ -125,7 +131,7 @@ public class MainFragment extends Fragment {
 
         ArrayList<String> urls = new ArrayList<>();
 
-        for(int i = 0; i <= 0;i++){
+        for(int i = 0; i <= pagesToLoad;i++){
             urls.add(String.format(Keys.SELECTED_PAGE_URL,i, (i * 12)));
         }
 
@@ -150,7 +156,7 @@ public class MainFragment extends Fragment {
 
                 adapter.notifyDataSetChanged();
                 setAsLoading(false);
-                currentPage = 0;
+                currentPage = pagesToLoad;
             };
         }).getArticles(urls.toArray(new String[0]));
 

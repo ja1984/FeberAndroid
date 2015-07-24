@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/primary_text"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:fontFamily="sans-serif-medium"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
@@ -67,6 +67,11 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     />
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/preamble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
                 <LinearLayout
                     android:visibility="gone"
