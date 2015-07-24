@@ -233,7 +233,7 @@ public class ActiveTextView extends TextView {
                 if(a.length>0){
                     mSpannable.removeSpan(a[0]);
                     setText(mSpannable);
-                    onMeasure(widthMeasureSpec, heightMeasureSpec);
+                    measure(widthMeasureSpec, heightMeasureSpec);
                 }else
                     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             }
@@ -246,7 +246,7 @@ public class ActiveTextView extends TextView {
                 if(a.length>0){
                     mSpannable.removeSpan(a[0]);
                     setText(mSpannable);
-                    onMeasure(widthMeasureSpec, heightMeasureSpec);
+                    measure(widthMeasureSpec, heightMeasureSpec);
                 }else
                     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             }
